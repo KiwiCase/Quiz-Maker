@@ -13,7 +13,7 @@ namespace Quiz_Maker
             Console.WriteLine("Welcome to Casey's Quintessential Quiz Maker");
         }
 
-        public int HowManyQuestions()
+        public static int HowManyQuestions()
         {
             int answer = 0;
             Console.WriteLine("How many questions would you like in your Quiz? \n5 is the maximum questions allowed: ");
@@ -26,7 +26,7 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public string TypeYourQuestions()
+        public string TypeYourQuestion()
         {
 
             Console.WriteLine("Please type your question, followed by 4 answers: ");
