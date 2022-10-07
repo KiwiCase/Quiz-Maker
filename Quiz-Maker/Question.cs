@@ -13,6 +13,6 @@ namespace Quiz_Maker
         public string AnswerTwo;
         public string AnswerThree;
         public string AnswerFour;
-        public int CorrectAnswer;
+        public string CorrectAnswer;
     }
 }
