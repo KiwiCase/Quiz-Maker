@@ -4,7 +4,6 @@
     {
         public static void Main(string[] args)
         {
-            var UserInterface = new UserInterface();
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 

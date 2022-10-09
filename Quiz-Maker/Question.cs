@@ -16,7 +16,5 @@ namespace Quiz_Maker
         public string AnswerFour;
     }
 
-    Question firstQuestion = new Question();
-
 }
 

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Quiz_Maker
 {
-    public class UserInterface
+    public static class UserInterface
     {
-        public void WelcomeMessage()
+        public static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Casey's Quintessential Quiz Maker");
         }
 
-        public int HowManyQuestions()
+        public static int HowManyQuestions()
         {
             int answer = 0;
             Console.WriteLine("How many questions would you like in your Quiz? \n5 is the maximum questions allowed: ");
@@ -26,7 +26,7 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public string TypeYourQuestion()
+        public static string TypeYourQuestion()
         {
             Console.WriteLine("Please type your first question: ");
             string firstQuestion = Console.ReadLine();
