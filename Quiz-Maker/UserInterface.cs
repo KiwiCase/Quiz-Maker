@@ -26,11 +26,5 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static string TypeYourQuestion()
-        {
-            Console.WriteLine("Please type your first question: ");
-            string firstQuestion = Console.ReadLine();
-            return firstQuestion;
-        }
     }
 }

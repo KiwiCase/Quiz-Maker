@@ -14,6 +14,13 @@ namespace Quiz_Maker
         public string AnswerTwo;
         public string AnswerThree;
         public string AnswerFour;
+
+        public string AskQuestion()
+        {
+            Console.WriteLine("Please type your question: ");
+            string userQuestion = Console.ReadLine();
+            return userQuestion;
+        }
     }
 
 }
