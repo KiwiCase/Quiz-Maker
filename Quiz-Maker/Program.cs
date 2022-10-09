@@ -7,10 +7,20 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            while (answer < 6)
-            {
+            Question firstQuestion = new Question();
+            firstQuestion.UserQuestion = "";
+            firstQuestion.AnswerOne = "";
+            firstQuestion.AnswerTwo = "";
+            firstQuestion.AnswerThree = "";
+            firstQuestion.AnswerFour = "";
+            firstQuestion.CorrectAnswer = "";
 
+            if (answer == 1)
+            {
+                UserInterface.AskQuestion();
+                UserInterface.AskCorrectAnswer();
             }
+
         }
     }
 }

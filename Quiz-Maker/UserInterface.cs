@@ -25,6 +25,18 @@ namespace Quiz_Maker
             }
             return answer;
         }
+        public static string AskQuestion()
+        {
+            Console.WriteLine("Please type your question: ");
+            string UserQuestion = Console.ReadLine();
+            return UserQuestion;
+        }
 
+        public static string AskCorrectAnswer()
+        {
+            Console.WriteLine("Please type the correct answer: ");
+            string CorrectAnswer = Console.ReadLine();
+            return CorrectAnswer;
+        }
     }
 }

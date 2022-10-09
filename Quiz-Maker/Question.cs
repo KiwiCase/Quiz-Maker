@@ -8,19 +8,12 @@ namespace Quiz_Maker
 {
     public class Question
     {
-        public string userQuestion;
-        public string CorrectAnswer;
+        public string UserQuestion;
         public string AnswerOne;
         public string AnswerTwo;
         public string AnswerThree;
         public string AnswerFour;
-
-        public string AskQuestion()
-        {
-            Console.WriteLine("Please type your question: ");
-            string userQuestion = Console.ReadLine();
-            return userQuestion;
-        }
+        public string CorrectAnswer;
     }
 
 }
