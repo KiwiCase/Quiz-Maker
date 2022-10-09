@@ -28,7 +28,6 @@ namespace Quiz_Maker
 
         public string TypeYourQuestion()
         {
-
             Console.WriteLine("Please type your question, followed by 4 answers: ");
             string firstQuestion = Console.ReadLine();
             return firstQuestion;
