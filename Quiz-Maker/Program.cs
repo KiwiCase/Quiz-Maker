@@ -1,9 +1,10 @@
 ﻿namespace Quiz_Maker
 {
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            var UserInterface = new UserInterface();
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
