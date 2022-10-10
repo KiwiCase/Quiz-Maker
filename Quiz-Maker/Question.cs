@@ -8,12 +8,19 @@ namespace Quiz_Maker
 {
     public class Question
     {
-        public string UserQuestion;
-        public string AnswerOne;
-        public string AnswerTwo;
-        public string AnswerThree;
-        public string AnswerFour;
-        public string CorrectAnswer;
+        public string userQuestion;
+        public string answerOne;
+        public string answerTwo;
+        public string answerThree;
+        public string correctAnswer;
+
+        public Question(string AnswerOne, string AnswerTwo, string AnswerThree, string CorrectAnswer)
+        {
+            answerOne = AnswerOne;
+            answerTwo = AnswerTwo;
+            answerThree = AnswerThree;
+            correctAnswer = CorrectAnswer;
+        }
     }
 
 }
