@@ -38,5 +38,27 @@ namespace Quiz_Maker
             string CorrectAnswer = Console.ReadLine();
             return CorrectAnswer;
         }
+
+        public static string AskFirstFalseAnswer()
+        {
+            Console.WriteLine("Please type your first false answer: ");
+            string AnswerOne = Console.ReadLine();
+            return AnswerOne;
+        }
+
+        public static string AskSecondFalseAnswer()
+        {
+            Console.WriteLine("Please type your second false answer: ");
+            string AnswerTwo = Console.ReadLine();
+            return AnswerTwo;
+
+        }
+
+        public static string AskThirdFalseAnswer()
+        {
+            Console.WriteLine("Please type your third false answer: ");
+            string AnswerThree = Console.ReadLine();
+            return AnswerThree;
+        }
     }
 }

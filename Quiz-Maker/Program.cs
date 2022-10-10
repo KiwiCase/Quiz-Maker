@@ -12,7 +12,6 @@
             firstQuestion.AnswerOne = "";
             firstQuestion.AnswerTwo = "";
             firstQuestion.AnswerThree = "";
-            firstQuestion.AnswerFour = "";
             firstQuestion.CorrectAnswer = "";
 
             if (answer == 1)
