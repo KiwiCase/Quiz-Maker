@@ -18,6 +18,9 @@
             {
                 UserInterface.AskQuestion();
                 UserInterface.AskCorrectAnswer();
+                UserInterface.AskFirstFalseAnswer();
+                UserInterface.AskSecondFalseAnswer();
+                UserInterface.AskThirdFalseAnswer();
             }
 
         }
