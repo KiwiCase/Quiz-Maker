@@ -7,30 +7,30 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            Question firstQuestion = new Question();
-            firstQuestion.userQuestion = "";
-            firstQuestion.answerOne = "";
-            firstQuestion.answerTwo = "";
-            firstQuestion.answerThree = "";
-            firstQuestion.correctAnswer = "";
+            Question question = new Question();
+            question.userQuestion = "";
+            question.answerOne = "";
+            question.answerTwo = "";
+            question.answerThree = "";
+            question.correctAnswer = "";
 
-            if (answer == 1)
+            for (int i = 0; i < answer; i++)
             {
-                List<string> questionAndAnswers = new List<string>();
+                List<string> firstQuestionAndAnswers = new List<string>();
                 string userQuestion = UserInterface.AskQuestion();
-                questionAndAnswers.Add(userQuestion);
+                firstQuestionAndAnswers.Add(userQuestion);
 
                 string correctAnswer = UserInterface.AskCorrectAnswer();
-                questionAndAnswers.Add(correctAnswer);
+                firstQuestionAndAnswers.Add(correctAnswer);
 
                 string answerOne = UserInterface.AskFirstFalseAnswer();
-                questionAndAnswers.Add(answerOne);
+                firstQuestionAndAnswers.Add(answerOne);
 
                 string answerTwo = UserInterface.AskSecondFalseAnswer();
-                questionAndAnswers.Add(answerTwo);
+                firstQuestionAndAnswers.Add(answerTwo);
 
                 string answerThree = UserInterface.AskThirdFalseAnswer();
-                questionAndAnswers.Add(answerThree);
+                firstQuestionAndAnswers.Add(answerThree);
 
             }
 
