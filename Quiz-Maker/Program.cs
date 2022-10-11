@@ -16,21 +16,21 @@
 
             for (int i = 0; i < answer; i++)
             {
-                List<string> firstQuestionAndAnswers = new List<string>();
+                List<string> QuestionAndAnswers = new List<string>();
                 string userQuestion = UserInterface.AskQuestion();
-                firstQuestionAndAnswers.Add(userQuestion);
+                QuestionAndAnswers.Add(userQuestion);
 
                 string correctAnswer = UserInterface.AskCorrectAnswer();
-                firstQuestionAndAnswers.Add(correctAnswer);
+                QuestionAndAnswers.Add(correctAnswer);
 
                 string answerOne = UserInterface.AskFirstFalseAnswer();
-                firstQuestionAndAnswers.Add(answerOne);
+                QuestionAndAnswers.Add(answerOne);
 
                 string answerTwo = UserInterface.AskSecondFalseAnswer();
-                firstQuestionAndAnswers.Add(answerTwo);
+                QuestionAndAnswers.Add(answerTwo);
 
                 string answerThree = UserInterface.AskThirdFalseAnswer();
-                firstQuestionAndAnswers.Add(answerThree);
+                QuestionAndAnswers.Add(answerThree);
 
             }
 
