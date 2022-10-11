@@ -14,13 +14,6 @@ namespace Quiz_Maker
         public string answerThree;
         public string correctAnswer;
 
-        public Question(string AnswerOne, string AnswerTwo, string AnswerThree, string CorrectAnswer)
-        {
-            answerOne = AnswerOne;
-            answerTwo = AnswerTwo;
-            answerThree = AnswerThree;
-            correctAnswer = CorrectAnswer;
-        }
     }
 
 }

@@ -16,8 +16,21 @@
 
             if (answer == 1)
             {
-                UserInterface.AskQuestion();
-                UserInterface.AskCorrectAnswer();
+                List<string> questionAndAnswers = new List<string>();
+                string userQuestion = UserInterface.AskQuestion();
+                questionAndAnswers.Add(userQuestion);
+
+                string correctAnswer = UserInterface.AskCorrectAnswer();
+                questionAndAnswers.Add(correctAnswer);
+
+                string answerOne = UserInterface.AskFirstFalseAnswer();
+                questionAndAnswers.Add(answerOne);
+
+                string answerTwo = UserInterface.AskSecondFalseAnswer();
+                questionAndAnswers.Add(answerTwo);
+
+                string answerThree = UserInterface.AskThirdFalseAnswer();
+                questionAndAnswers.Add(answerThree);
 
             }
 
