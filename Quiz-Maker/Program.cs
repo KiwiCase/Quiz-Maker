@@ -7,7 +7,7 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            Question question = new Question();
+            QuestionAndAnswers question = new QuestionAndAnswers();
             question.userQuestion = "";
             question.answerOne = "";
             question.answerTwo = "";
