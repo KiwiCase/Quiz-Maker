@@ -14,25 +14,23 @@
             question.answerThree = "";
             question.correctAnswer = "";
 
-            for (int i = 0; i < answer; i++)
-            {
-                List<string> QuestionAndAnswers = new List<string>();
-                string userQuestion = UserInterface.AskQuestion();
-                QuestionAndAnswers.Add(userQuestion);
+            List<string> QuestionAndAnswers = new List<string>();
 
-                string correctAnswer = UserInterface.AskCorrectAnswer();
-                QuestionAndAnswers.Add(correctAnswer);
+            string userQuestion = UserInterface.AskQuestion();
+            QuestionAndAnswers.Add(userQuestion);
 
-                string answerOne = UserInterface.AskFirstFalseAnswer();
-                QuestionAndAnswers.Add(answerOne);
+            string correctAnswer = UserInterface.AskCorrectAnswer();
+            QuestionAndAnswers.Add(correctAnswer);
 
-                string answerTwo = UserInterface.AskSecondFalseAnswer();
-                QuestionAndAnswers.Add(answerTwo);
+            string answerOne = UserInterface.AskFirstFalseAnswer();
+            QuestionAndAnswers.Add(answerOne);
 
-                string answerThree = UserInterface.AskThirdFalseAnswer();
-                QuestionAndAnswers.Add(answerThree);
+            string answerTwo = UserInterface.AskSecondFalseAnswer();
+            QuestionAndAnswers.Add(answerTwo);
 
-            }
+            string answerThree = UserInterface.AskThirdFalseAnswer();
+            QuestionAndAnswers.Add(answerThree);
+
 
         }
     }
