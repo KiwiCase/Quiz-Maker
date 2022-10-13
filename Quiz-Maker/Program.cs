@@ -8,6 +8,7 @@
             int answer = UserInterface.HowManyQuestions();
 
             QuestionAndAnswers question = new QuestionAndAnswers();
+
             question.userQuestion = "";
             question.answerOne = "";
             question.answerTwo = "";
