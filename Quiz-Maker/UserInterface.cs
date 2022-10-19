@@ -25,40 +25,50 @@ namespace Quiz_Maker
             }
             return answer;
         }
-        public static string AskQuestion()
-        {
-            Console.WriteLine("Please type your question: ");
-            string UserQuestion = Console.ReadLine();
-            return UserQuestion;
+        public static string AskQuestion()                                                       //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your question: ");                                    //TODO: CONSOLIDATE
+            string UserQuestion = Console.ReadLine();                                            //TODO: CONSOLIDATE
+            return UserQuestion;                                                                 //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskCorrectAnswer()                                                  //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type the correct answer: ");                               //TODO: CONSOLIDATE
+            string CorrectAnswer = Console.ReadLine();                                           //TODO: CONSOLIDATE
+            return CorrectAnswer;                                                                //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskFirstFalseAnswer()                                               //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your first false answer: ");                          //TODO: CONSOLIDATE
+            string AnswerOne = Console.ReadLine();                                               //TODO: CONSOLIDATE
+            return AnswerOne;                                                                    //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskSecondFalseAnswer()                                              //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your second false answer: ");                         //TODO: CONSOLIDATE
+            string AnswerTwo = Console.ReadLine();                                               //TODO: CONSOLIDATE
+            return AnswerTwo;                                                                    //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskThirdFalseAnswer()                                               //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your third false answer: ");                          //TODO: CONSOLIDATE
+            string AnswerThree = Console.ReadLine();                                             //TODO: CONSOLIDATE
+            return AnswerThree;                                                                  //TODO: CONSOLIDATE
         }
 
-        public static string AskCorrectAnswer()
+        public static QuestionAndAnswers GetQnA()
         {
-            Console.WriteLine("Please type the correct answer: ");
-            string CorrectAnswer = Console.ReadLine();
-            return CorrectAnswer;
+            throw new NotImplementedException();
         }
 
-        public static string AskFirstFalseAnswer()
+        internal static bool AskAQnAThing(QuestionAndAnswers card1)
         {
-            Console.WriteLine("Please type your first false answer: ");
-            string AnswerOne = Console.ReadLine();
-            return AnswerOne;
-        }
-
-        public static string AskSecondFalseAnswer()
-        {
-            Console.WriteLine("Please type your second false answer: ");
-            string AnswerTwo = Console.ReadLine();
-            return AnswerTwo;
-
-        }
-
-        public static string AskThirdFalseAnswer()
-        {
-            Console.WriteLine("Please type your third false answer: ");
-            string AnswerThree = Console.ReadLine();
-            return AnswerThree;
+            throw new NotImplementedException();
         }
     }
 }

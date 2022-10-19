@@ -16,6 +16,12 @@
             question.correctAnswer = "";
 
             List<string> QuestionAndAnswers = new List<string>();
+            List<QuestionAndAnswers> QuestionAndAnswersExample = new List<QuestionAndAnswers>();
+
+
+            QuestionAndAnswers card1 = UserInterface.GetQnA();
+
+            bool wasAnsweredCorrect = UserInterface.AskAQnAThing(card1);
 
             string userQuestion = UserInterface.AskQuestion();
             QuestionAndAnswers.Add(userQuestion);
