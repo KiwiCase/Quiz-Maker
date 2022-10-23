@@ -15,6 +15,9 @@
             QandA1.askForSecondFalseAnswer = "Please type your second false answer: ";
             QandA1.askForThirdFalseAnswer = "Please type your third false answer: ";
 
+            Console.WriteLine(QandA1.askForQuestion);
+            Console.ReadLine();
+
 
             QuestionAndAnswers question = new QuestionAndAnswers();
 
