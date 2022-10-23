@@ -26,7 +26,42 @@ namespace Quiz_Maker
             return answer;
         }
 
-        
-        
+        public static string AskQuestion()                                                       //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your question: ");                                    //TODO: CONSOLIDATE
+            string UserQuestion = Console.ReadLine();                                            //TODO: CONSOLIDATE
+            return UserQuestion;                                                                 //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskCorrectAnswer()                                                  //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type the correct answer: ");                               //TODO: CONSOLIDATE
+            string CorrectAnswer = Console.ReadLine();                                           //TODO: CONSOLIDATE
+            return CorrectAnswer;                                                                //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskFirstFalseAnswer()                                               //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your first false answer: ");                          //TODO: CONSOLIDATE
+            string AnswerOne = Console.ReadLine();                                               //TODO: CONSOLIDATE
+            return AnswerOne;                                                                    //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskSecondFalseAnswer()                                              //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your second false answer: ");                         //TODO: CONSOLIDATE
+            string AnswerTwo = Console.ReadLine();                                               //TODO: CONSOLIDATE
+            return AnswerTwo;                                                                    //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        }                                                                                        //TODO: CONSOLIDATE
+                                                                                                 //TODO: CONSOLIDATE
+        public static string AskThirdFalseAnswer()                                               //TODO: CONSOLIDATE
+        {                                                                                        //TODO: CONSOLIDATE
+            Console.WriteLine("Please type your third false answer: ");                          //TODO: CONSOLIDATE
+            string AnswerThree = Console.ReadLine();                                             //TODO: CONSOLIDATE
+            return AnswerThree;                                                                  //TODO: CONSOLIDATE
+        }
+
+
     }
 }

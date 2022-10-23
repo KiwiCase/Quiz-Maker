@@ -7,6 +7,8 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
+            //consolidate methods into 1 method gaaaaaah XD
+
             GetQuestionsAndAnswers askQuestionAndAnswers = new GetQuestionsAndAnswers();
 
             askQuestionAndAnswers.askForQuestion = "Please type your question: ";
@@ -16,8 +18,7 @@
             askQuestionAndAnswers.askForThirdFalseAnswer = "Please type your third false answer: ";
 
             Console.WriteLine(askQuestionAndAnswers.askForQuestion);
-            Console.ReadLine();
-
+            string userQuestion = Console.ReadLine();
 
             QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
 
@@ -29,6 +30,7 @@
 
             List<string> QuestionAndAnswers = new List<string>();
             List<QuestionAndAnswers> QuestionAndAnswersExample = new List<QuestionAndAnswers>();
+
         }
     }
 }
