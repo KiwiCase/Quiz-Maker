@@ -19,13 +19,13 @@
             Console.ReadLine();
 
 
-            QuestionAndAnswers question = new QuestionAndAnswers();
+            QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
 
-            question.userQuestion = "";
-            question.answerOne = "";
-            question.answerTwo = "";
-            question.answerThree = "";
-            question.correctAnswer = "";
+            userQuestionAndAnswers.userQuestion = "";
+            userQuestionAndAnswers.answerOne = "";
+            userQuestionAndAnswers.answerTwo = "";
+            userQuestionAndAnswers.answerThree = "";
+            userQuestionAndAnswers.correctAnswer = "";
 
             List<string> QuestionAndAnswers = new List<string>();
             List<QuestionAndAnswers> QuestionAndAnswersExample = new List<QuestionAndAnswers>();
