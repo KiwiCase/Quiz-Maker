@@ -7,6 +7,15 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
+            GetQuestionsAndAnswers QandA1 = new GetQuestionsAndAnswers();
+
+            QandA1.askForQuestion = "Please type your question: ";
+            QandA1.askForCorrectAnswer = "Please type the correct answer: ";
+            QandA1.askForFirstFalseAnswer = "Please type your first false answer: ";
+            QandA1.askForSecondFalseAnswer = "Please type your second false answer: ";
+            QandA1.askForThirdFalseAnswer = "Please type your third false answer: ";
+
+
             QuestionAndAnswers question = new QuestionAndAnswers();
 
             question.userQuestion = "";
@@ -17,28 +26,6 @@
 
             List<string> QuestionAndAnswers = new List<string>();
             List<QuestionAndAnswers> QuestionAndAnswersExample = new List<QuestionAndAnswers>();
-
-
-            QuestionAndAnswers card1 = UserInterface.GetQnA();
-
-            bool wasAnsweredCorrect = UserInterface.AskAQnAThing(card1);
-
-            string userQuestion = UserInterface.AskQuestion();
-            QuestionAndAnswers.Add(userQuestion);
-
-            string correctAnswer = UserInterface.AskCorrectAnswer();
-            QuestionAndAnswers.Add(correctAnswer);
-
-            string answerOne = UserInterface.AskFirstFalseAnswer();
-            QuestionAndAnswers.Add(answerOne);
-
-            string answerTwo = UserInterface.AskSecondFalseAnswer();
-            QuestionAndAnswers.Add(answerTwo);
-
-            string answerThree = UserInterface.AskThirdFalseAnswer();
-            QuestionAndAnswers.Add(answerThree);
-
-
         }
     }
 }

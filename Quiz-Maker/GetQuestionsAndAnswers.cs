@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Quiz_Maker
 {
-    internal class GetQuestionsAndAnswers
+    public class GetQuestionsAndAnswers
     {
+        public string askForQuestion;
+        public string askForCorrectAnswer;
+        public string askForFirstFalseAnswer;
+        public string askForSecondFalseAnswer;
+        public string askForThirdFalseAnswer;
     }
 }
