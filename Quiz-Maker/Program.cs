@@ -7,13 +7,13 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            GetQuestionsAndAnswers QandA1 = new GetQuestionsAndAnswers();
+            GetQuestionsAndAnswers askQuestionAndAnswers = new GetQuestionsAndAnswers();
 
-            QandA1.askForQuestion = "Please type your question: ";
-            QandA1.askForCorrectAnswer = "Please type the correct answer: ";
-            QandA1.askForFirstFalseAnswer = "Please type your first false answer: ";
-            QandA1.askForSecondFalseAnswer = "Please type your second false answer: ";
-            QandA1.askForThirdFalseAnswer = "Please type your third false answer: ";
+            askQuestionAndAnswers.askForQuestion = "Please type your question: ";
+            askQuestionAndAnswers.askForCorrectAnswer = "Please type the correct answer: ";
+            askQuestionAndAnswers.askForFirstFalseAnswer = "Please type your first false answer: ";
+            askQuestionAndAnswers.askForSecondFalseAnswer = "Please type your second false answer: ";
+            askQuestionAndAnswers.askForThirdFalseAnswer = "Please type your third false answer: ";
 
             Console.WriteLine(QandA1.askForQuestion);
             Console.ReadLine();
