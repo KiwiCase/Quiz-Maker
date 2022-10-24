@@ -26,44 +26,25 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static void GetQuestionAndAnswers()
+        public static string GetQuestionAndAnswers(string UserQuestion, string CorrectAnswer, string FalseAnswerOne, string FalseAnswerTwo, string FalseAnswerThree)
         {
-            static string AskQuestion()                                                       
-            {                                                                                        
+                                                                                      
                 Console.WriteLine("Please type your question: ");                                   
-                string UserQuestion = Console.ReadLine();                                           
-                return UserQuestion;                                                          
-            }
-
-            static string AskCorrectAnswer()                                                  
-            {                                                                                      
+                UserQuestion = Console.ReadLine();                                           
+                                                                                                                                            
                 Console.WriteLine("Please type the correct answer: ");                               
-                string CorrectAnswer = Console.ReadLine();                                           
-                return CorrectAnswer;                                                               
-            }
-
-            static string AskFirstFalseAnswer()                                              
-            {                                                                                       
+                CorrectAnswer = Console.ReadLine();                                           
+                                                                                
                 Console.WriteLine("Please type your first false answer: ");                          
-                string AnswerOne = Console.ReadLine();                                              
-                return AnswerOne;                                                                   
-            }
+                FalseAnswerOne = Console.ReadLine();                                              
 
-            static string AskSecondFalseAnswer()
-            {
                 Console.WriteLine("Please type your second false answer: ");
-                string AnswerTwo = Console.ReadLine();
-                return AnswerTwo;
+                FalseAnswerTwo = Console.ReadLine();
 
-            }
-
-            static string AskThirdFalseAnswer()
-            {
                 Console.WriteLine("Please type your third false answer: ");
-                string AnswerThree = Console.ReadLine();
-                return AnswerThree;
-            }
-
+                FalseAnswerThree = Console.ReadLine();
+                
+            return UserQuestion + CorrectAnswer + FalseAnswerOne + FalseAnswerTwo + FalseAnswerThree;
         }
                                                                                                                                                                              
 
