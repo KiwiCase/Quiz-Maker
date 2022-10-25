@@ -6,8 +6,6 @@
         {
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
-            
-
 
             QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
 

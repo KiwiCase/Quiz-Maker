@@ -26,8 +26,9 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static string GetQuestionAndAnswers(string UserQuestion, string CorrectAnswer, string FalseAnswerOne, string FalseAnswerTwo, string FalseAnswerThree)
+        public static List<string> GetQuestionAndAnswers(string UserQuestion, string CorrectAnswer, string FalseAnswerOne, string FalseAnswerTwo, string FalseAnswerThree)
         {
+                List<string> userQuestionAndAnswers = new List<string>();
                                                                                       
                 Console.WriteLine("Please type your question: ");                                   
                 UserQuestion = Console.ReadLine();                                           
@@ -43,8 +44,8 @@ namespace Quiz_Maker
 
                 Console.WriteLine("Please type your third false answer: ");
                 FalseAnswerThree = Console.ReadLine();
-                
-            return UserQuestion + CorrectAnswer + FalseAnswerOne + FalseAnswerTwo + FalseAnswerThree;
+
+            return userQuestionAndAnswers;
         }
                                                                                                                                                                              
 
