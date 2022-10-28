@@ -26,28 +26,34 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static List<string> GetQuestionAndAnswers(string UserQuestion, string CorrectAnswer, string FalseAnswerOne, string FalseAnswerTwo, string FalseAnswerThree)
+        public static QuestionAndAnswers GetQuestionAndAnswers()
         {
-                List<string> userQuestionAndAnswers = new List<string>();
-                                                                                      
-                Console.WriteLine("Please type your question: ");                                   
-                UserQuestion = Console.ReadLine();                                           
-                                                                                                                                            
-                Console.WriteLine("Please type the correct answer: ");                               
-                CorrectAnswer = Console.ReadLine();                                           
-                                                                                
-                Console.WriteLine("Please type your first false answer: ");                          
-                FalseAnswerOne = Console.ReadLine();                                              
+            QuestionAndAnswers UserQnA = new QuestionAndAnswers();
 
-                Console.WriteLine("Please type your second false answer: ");
-                FalseAnswerTwo = Console.ReadLine();
+            string userQuestion;
+            string correctAnswer;
+            string falseAnswerOne;
+            string falseAnswerTwo;
+            string falseAnswerThree;
 
-                Console.WriteLine("Please type your third false answer: ");
-                FalseAnswerThree = Console.ReadLine();
+            Console.WriteLine("Please type your question: ");
+            UserQnA.userQuestion = Console.ReadLine();
 
-            return userQuestionAndAnswers;
+            Console.WriteLine("Please type the correct answer: ");
+            UserQnA.correctAnswer = Console.ReadLine();
+
+            Console.WriteLine("Please type your first false answer: ");
+            UserQnA.falseAnswerOne = Console.ReadLine();
+
+            Console.WriteLine("Please type your second false answer: ");
+            UserQnA.falseAnswerTwo = Console.ReadLine();
+
+            Console.WriteLine("Please type your third false answer: ");
+            UserQnA.falseAnswerThree = Console.ReadLine();
+
+            return UserQnA;
         }
-                                                                                                                                                                             
+
 
 
     }

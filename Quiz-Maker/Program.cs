@@ -6,18 +6,8 @@
         {
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
-
-            QuestionAndAnswers userQuestionAndAnswers = new QuestionAndAnswers();
-
-            userQuestionAndAnswers.userQuestion = "";
-            userQuestionAndAnswers.answerOne = "";
-            userQuestionAndAnswers.answerTwo = "";
-            userQuestionAndAnswers.answerThree = "";
-            userQuestionAndAnswers.correctAnswer = "";
-
-            List<string> QuestionAndAnswers = new List<string>();
-            List<QuestionAndAnswers> QuestionAndAnswersExample = new List<QuestionAndAnswers>();
-
+            QuestionAndAnswers UserQnA = UserInterface.GetQuestionAndAnswers();
+          
         }
     }
 }
