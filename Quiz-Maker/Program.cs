@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Quiz_Maker
 {
     public class Program
     {
@@ -10,6 +12,7 @@
             if (answer > 0)
             {
                 QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
+                Console.WriteLine(QnAOne);
             }
 
             if (answer > 1)
@@ -32,5 +35,6 @@
                 QuestionAndAnswers QnAFive = UserInterface.GetQuestionAndAnswers();
             }
         }
+
     }
 }

@@ -13,8 +13,11 @@ namespace Quiz_Maker
         public string falseAnswerTwo;                 //TODO: this could maybe perhaps possilby be a list of string
         public string falseAnswerThree;               //TODO: this could maybe perhaps possilby be a list of string
         public string correctAnswer;             //TODO: this could maybe perhaps possilby be a list of string
-        public int correctAnswerIndex;
-    }
 
+        public override string ToString()
+        {
+            return userQuestion + falseAnswerOne + falseAnswerTwo + falseAnswerThree + correctAnswer;  
+        }
+    }
 }
 
