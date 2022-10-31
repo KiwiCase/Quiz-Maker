@@ -16,8 +16,9 @@ namespace Quiz_Maker
 
         public override string ToString()
         {
-            return $"{userQuestion} + {falseAnswerOne} + {falseAnswerTwo} + {falseAnswerThree} + {correctAnswer}"; 
+            return userQuestion;
         }
+
     }
 }
 

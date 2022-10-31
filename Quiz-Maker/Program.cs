@@ -13,31 +13,9 @@ namespace Quiz_Maker
             {
                 QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
                 Console.WriteLine(QnAOne);
+
             }
 
-            if (answer > 1)
-            {
-                QuestionAndAnswers QnATwo = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine(QnATwo);
-            }
-
-            if (answer > 2)
-            {
-                QuestionAndAnswers QnAThree = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine(QnAThree);
-            }
-
-            if (answer > 3)
-            {
-                QuestionAndAnswers QnAFour = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine(QnAFour);
-            }
-
-            if (answer > 4)
-            {
-                QuestionAndAnswers QnAFive = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine(QnAFive);
-            }
         }
 
     }
