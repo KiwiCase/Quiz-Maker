@@ -13,7 +13,8 @@ namespace Quiz_Maker
             if (answer > 0)
             {
                 QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine(QnAOne);
+                Console.WriteLine($"Please confirm your question by pressing ENTER: \n\n{QnAOne.userQuestion}");
+                Console.ReadLine();
 
             }
 
