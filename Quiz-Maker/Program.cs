@@ -12,6 +12,16 @@ namespace Quiz_Maker
             for (int i = 0; i < answer; i++)
             { 
             QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
+
+                if (answer > 0)
+                {
+                    Console.WriteLine(QnAOne);
+
+                    if (answer > 1)
+                    {
+                        Console.WriteLine(QnAOne);
+                    }
+                }
             }
 
         }
