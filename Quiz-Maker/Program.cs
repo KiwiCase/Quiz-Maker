@@ -10,7 +10,7 @@
             if (answer > 0)
             {
                 QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine($"Thank you for your question and answers - they are as follows:\n\nQuiz Question 1 - {QnAOne.userQuestion}\nCorrect Answer - {QnAOne.correctAnswer}\nFalse Answer 1 - {QnAOne.falseAnswerOne}\nFalse Answer 2 - {QnAOne.falseAnswerTwo}\nFalse Answer 3 - {QnAOne.falseAnswerThree}\n\nPress Enter To Start The Quiz...");
+                Console.WriteLine($"Thank you for your question and answers - they are as follows:\n\nQuiz Question 1 - {QnAOne.userQuestion}\nCorrect Answer - {QnAOne.correctAnswer}\nFalse Answer 1 - {QnAOne.falseAnswerOne}\nFalse Answer 2 - {QnAOne.falseAnswerTwo}\nFalse Answer 3 - {QnAOne.falseAnswerThree}");
                 Console.ReadLine();
 
             }
