@@ -15,6 +15,11 @@
 
             }
 
+            if (answer > 1)
+            {
+                QuestionAndAnswers QnATwo = UserInterface.GetQuestionAndAnswers(); //In response to Issue 4 in GH
+            }
+
         }
 
     }
