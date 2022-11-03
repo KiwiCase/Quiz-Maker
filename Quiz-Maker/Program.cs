@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Quiz_Maker
 {
     public class Program
     {
@@ -7,13 +9,12 @@
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-                for (int i = answer; i == answer; i++)
-                {
-                    QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
-                }
+            for (int i = 0; i < answer; i++)
+            { 
+            QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
+            }
 
         }
-
     }
 }
 
