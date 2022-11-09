@@ -11,7 +11,7 @@ namespace Quiz_Maker
 
             for (int i = 0; i < answer; i++)
             {
-                QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
+                QuestionAndAnswers UserQnA = UserInterface.GetQuestionAndAnswers();
             }
 
         }
