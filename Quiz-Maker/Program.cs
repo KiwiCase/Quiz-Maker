@@ -9,10 +9,9 @@ namespace Quiz_Maker
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            if (answer > 0)
+            for (int i = 0; i < answer; i++)
             {
                 QuestionAndAnswers QnAOne = UserInterface.GetQuestionAndAnswers();
-                Console.WriteLine($"Your first Question and Answers are as follows:\n\nFirst Question - {QnAOne.userQuestion}\n"
             }
 
         }
