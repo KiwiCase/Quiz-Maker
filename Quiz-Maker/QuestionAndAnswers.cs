@@ -18,10 +18,7 @@ namespace Quiz_Maker
         
         private int correctAnswerIndex;//TODO: this could maybe perhaps possilby be a list of string
 
-        public override string ToString()
-        {
-            return userQuestion;
-        }
+
 
     }
 }
