@@ -26,32 +26,27 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static QuestionAndAnswers GetQuestionAndAnswers()
+        public static QuestionAndAnswers NewQuestionAndAnswers()
         {
-            QuestionAndAnswers UserQnA = new QuestionAndAnswers();
-
-            string userQuestion;
-            string correctAnswer;
-            string falseAnswerOne;
-            string falseAnswerTwo;
-            string falseAnswerThree;
-
             Console.WriteLine("Please type your question: ");
-            UserQnA.userQuestion = Console.ReadLine();
+            string userQuestion = Console.ReadLine();
 
             Console.WriteLine("Please type the correct answer: ");
-            UserQnA.correctAnswer = Console.ReadLine();
+            string correctAnswer = Console.ReadLine();
 
             Console.WriteLine("Please type your first false answer: ");
-            UserQnA.falseAnswerOne = Console.ReadLine();
+            string falseAnswerOne = Console.ReadLine();
 
             Console.WriteLine("Please type your second false answer: ");
-            UserQnA.falseAnswerTwo = Console.ReadLine();
+            string falseAnswerTwo = Console.ReadLine();
 
             Console.WriteLine("Please type your third false answer: ");
-            UserQnA.falseAnswerThree = Console.ReadLine();
+            string falseAnswerThree = Console.ReadLine();
 
-            return UserQnA;
+            QuestionAndAnswers userQnA = new QuestionAndAnswers(userQuestion, correctAnswer);
+            userQnA.IncorrectAnswers.AddRange(new string[] { falseAnswerOne, falseAnswerTwo, falseAnswerThree });
+
+            return userQnA;
         }
 
 
