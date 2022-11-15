@@ -26,7 +26,7 @@ namespace Quiz_Maker
             return answer;
         }
 
-        public static QuestionAndAnswers NewQuestionAndAnswers()
+        public static QuestionAndAnswers GetQuestionAndAnswers()
         {
             Console.WriteLine("Please type your question: ");
             string userQuestion = Console.ReadLine();
