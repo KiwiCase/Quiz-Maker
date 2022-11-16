@@ -48,9 +48,25 @@ namespace Quiz_Maker
 
             return userQnA;
         }
+        public static bool AskQuestion(QuestionAndAnswers userQnA)
+        {
+            string[] answers = userQnA.GetShuffledAnswers(out int correctIndex);
 
+            Console.WriteLine($"Question: {userQnA.Question}");
+            Console.WriteLine("Answers:");
+            for (int i = 0; i < answers.Length; i++)
+            {
+                Console.WriteLine($"  {i + 1}. {answers[i]}");
+            }
+            int userPick = 0;
+            do
+            {
+                Console.WriteLine("Pick one answer:");
+                string input = Console.ReadLine();
+                int.TryParse(input, out userPick);
+            } while (userPick <= 0);
 
-
-
+            return userPick - 1 == correctIndex;
+        }
     }
 }
