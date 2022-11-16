@@ -10,7 +10,7 @@ namespace Quiz_Maker
             int answer = UserInterface.HowManyQuestions();
 
             QuestionAndAnswers userQnA = UserInterface.GetQuestionAndAnswers();
-            UserInterface.AskQuestion(userQnA);
+            UserInterface.AskQuestion(userQnA); //Testing code
 
         }
     }
