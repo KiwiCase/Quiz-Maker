@@ -24,7 +24,7 @@ namespace Quiz_Maker
         static readonly Random rng = new Random();
         public string[] GetShuffledAnswers(out int correctIndex)
         {
-            var list = IncorrectAnswers.ToList();
+            List<string> list = IncorrectAnswers.ToList();
             list.Add(CorrectAnswer);
             list.Sort((x, y) => rng.Next(2) * 2 - 1);   // shuffles list
             correctIndex = list.IndexOf(CorrectAnswer);
