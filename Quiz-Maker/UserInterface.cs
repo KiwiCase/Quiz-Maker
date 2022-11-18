@@ -34,13 +34,13 @@ namespace Quiz_Maker
             Console.WriteLine("Please type the correct answer: ");
             string correctAnswer = Console.ReadLine();
 
-            Console.WriteLine("Please type your first false answer: ");
+            Console.WriteLine("Please type your 1st false answer: ");
             string falseAnswerOne = Console.ReadLine();
 
-            Console.WriteLine("Please type your second false answer: ");
+            Console.WriteLine("Please type your 2nd false answer: ");
             string falseAnswerTwo = Console.ReadLine();
 
-            Console.WriteLine("Please type your third false answer: ");
+            Console.WriteLine("Please type your 3rd false answer: ");
             string falseAnswerThree = Console.ReadLine();
 
             QuestionAndAnswers userQnA = new QuestionAndAnswers(userQuestion, correctAnswer);
@@ -51,9 +51,8 @@ namespace Quiz_Maker
 
         public static void ReadyToPlayQuiz()
         {
-            Console.WriteLine("Press Enter to start the Quiz");
-            Console.ReadKey();
-              
+            Console.WriteLine("All set! Press Enter to start the Quiz!");
+            Console.ReadKey();   
         }
         
         public static bool AskQuestion(QuestionAndAnswers userQnA)
