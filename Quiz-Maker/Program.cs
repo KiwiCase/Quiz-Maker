@@ -11,8 +11,10 @@ namespace Quiz_Maker
 
             for (int i = 0; i < answer; i++)
             {
-                UserInterface.AskQuestion(UserInterface.GetQuestionAndAnswers());
+                UserInterface.GetQuestionAndAnswers();
             }
+
+            UserInterface.ReadyToPlayQuiz();
         }
     }
 }
