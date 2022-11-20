@@ -49,6 +49,14 @@ namespace Quiz_Maker
             return userQnA;
         }
 
+        public static QuestionAndAnswers UserQuestionsAndAnswers(int answer, QuestionAndAnswers userQnA)
+        {
+            for (int i = 0; i < answer; i++)
+            {
+                userQnA = UserInterface.GetQuestionAndAnswers();
+            } return userQnA;
+        }
+
         public static void ReadyToPlayQuiz()
         {
             Console.WriteLine("All set! Press Enter to start the Quiz!");
