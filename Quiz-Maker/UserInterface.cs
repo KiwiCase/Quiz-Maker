@@ -54,15 +54,16 @@ namespace Quiz_Maker
             for (int i = 0; i < answer; i++)
             {
                 userQnA = UserInterface.GetQuestionAndAnswers();
-            } return userQnA;
+            }
+            return userQnA;
         }
 
         public static void ReadyToPlayQuiz()
         {
             Console.WriteLine("All set! Press Enter to start the Quiz!");
-            Console.ReadKey();   
+            Console.ReadKey();
         }
-        
+
         public static bool AskQuestion(QuestionAndAnswers userQnA)
         {
             string[] answers = userQnA.GetShuffledAnswers(out int correctIndex);

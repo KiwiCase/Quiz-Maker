@@ -26,7 +26,8 @@ namespace Quiz_Maker
         {
             List<string> list = IncorrectAnswers.ToList();
             list.Add(CorrectAnswer);
-            list.Sort((x, y) => rng.Next(2) * 2 - 1);   // shuffles list
+            Random ran = new Random();
+            List<string> shuffled = list.OrderBy(_ => ran.Next()).ToList();  // shuffles list
             correctIndex = list.IndexOf(CorrectAnswer);
             return list.ToArray();
         }
