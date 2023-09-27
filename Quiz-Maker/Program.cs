@@ -9,7 +9,12 @@ namespace Quiz_Maker
             UserInterface.WelcomeMessage();
             int answer = UserInterface.HowManyQuestions();
 
-            QuestionAndAnswers userQnA = UserInterface.UserQuestionsAndAnswers(answer, userQnA);
+            var Qnas = new List<QuestionAndAnswers>();
+
+
+            var ordered = Qnas.OrderBy(qbla => qbla.id);
+
+            //QuestionAndAnswers userQnA = UserInterface.UserQuestionsAndAnswers(answer, userQnA);
 
             UserInterface.ReadyToPlayQuiz();
 

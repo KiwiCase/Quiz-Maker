@@ -8,11 +8,16 @@ namespace Quiz_Maker
 {
     public static class UserInterface
     {
+        /// Displays a welcome message to the user.
         public static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Casey's Quintessential Quiz Maker");
         }
 
+        /// <summary>
+        /// Asks the user for the number of questions they'd like in their quiz.
+        /// </summary>
+        /// <returns>Number of questions the user wants in the quiz.</returns>
         public static int HowManyQuestions()
         {
             int answer = 0;
@@ -26,6 +31,10 @@ namespace Quiz_Maker
             return answer;
         }
 
+        /// <summary>
+        /// Prompts the user to input a question, its correct answer, and three incorrect answers.
+        /// </summary>
+        /// <returns>A QuestionAndAnswers object populated with the user's input.</returns>
         public static QuestionAndAnswers GetQuestionAndAnswers()
         {
             Console.WriteLine("Please type your question: ");
@@ -48,7 +57,12 @@ namespace Quiz_Maker
 
             return userQnA;
         }
-
+        /// <summary>
+        /// Collects a series of questions and their respective answers from the user based on the given count.
+        /// </summary>
+        /// <param name="answer">The number of questions to be collected from the user.</param>
+        /// <param name="userQnA">An instance of QuestionAndAnswers to be populated.</param>
+        /// <returns>The last QuestionAndAnswers object populated with the user's input.</returns>
         public static QuestionAndAnswers UserQuestionsAndAnswers(int answer, QuestionAndAnswers userQnA)
         {
             for (int i = 0; i < answer; i++)
@@ -58,31 +72,34 @@ namespace Quiz_Maker
             return userQnA;
         }
 
+        /// <summary>
+        /// Informs the user that the setup is complete and prompts them to start the quiz.
+        /// </summary>
         public static void ReadyToPlayQuiz()
         {
             Console.WriteLine("All set! Press Enter to start the Quiz!");
             Console.ReadKey();
         }
 
-        public static bool AskQuestion(QuestionAndAnswers userQnA)
-        {
-            string[] answers = userQnA.GetShuffledAnswers(out int correctIndex);
+        //public static bool AskQuestion(QuestionAndAnswers userQnA)
+        //{
+        //    string answers = userQnA.GetShuffledAnswers(out int correctIndex);
 
-            Console.WriteLine($"Question: {userQnA.Question}");
-            Console.WriteLine("Answers:");
-            for (int i = 0; i < answers.Length; i++)
-            {
-                Console.WriteLine($"  {i + 1}. {answers[i]}");
-            }
-            int userPick = 0;
-            do
-            {
-                Console.WriteLine("Pick one answer:");
-                string input = Console.ReadLine();
-                int.TryParse(input, out userPick);
-            } while (userPick <= 0);
+        //    Console.WriteLine($"Question: {userQnA.Question}");
+        //    Console.WriteLine("Answers:");
+        //    for (int i = 0; i < answers.Length; i++)
+        //    {
+        //        Console.WriteLine($"  {i + 1}. {answers[i]}");
+        //    }
+        //    int userPick = 0;
+        //    do
+        //    {
+        //        Console.WriteLine("Pick one answer:");
+        //        string input = Console.ReadLine();
+        //        int.TryParse(input, out userPick);
+        //    } while (userPick <= 0);
 
-            return userPick - 1 == correctIndex;
-        }
+        //    return userPick - 1 == correctIndex;
+        //}
     }
 }
