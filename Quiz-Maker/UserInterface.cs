@@ -81,6 +81,26 @@ namespace Quiz_Maker
             Console.ReadKey();
         }
 
+        public static List<QuestionAndAnswers> UserQuestionsAndAnswers(int answer)
+        {
+            // Create a list to store the questions and their respective answers.
+            List<QuestionAndAnswers> questionsList = new List<QuestionAndAnswers>();
+
+            // Loop based on the number of questions the user wants to add.
+            for (int i = 0; i < answer; i++)
+            {
+                // Prompt the user to input a question, correct answer, and three incorrect answers.
+                // Then store the result in the userQnA object.
+                QuestionAndAnswers userQnA = UserInterface.GetQuestionAndAnswers();
+
+                // Add the collected question and answers to the list.
+                questionsList.Add(userQnA);
+            }
+
+            // Return the list of questions and answers.
+            return questionsList;
+        }
+
         //public static bool AskQuestion(QuestionAndAnswers userQnA)
         //{
         //    string answers = userQnA.GetShuffledAnswers(out int correctIndex);

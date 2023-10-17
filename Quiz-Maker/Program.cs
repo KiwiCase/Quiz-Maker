@@ -4,20 +4,21 @@ namespace Quiz_Maker
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
+            // Display a welcome message to the user.
             UserInterface.WelcomeMessage();
-            int answer = UserInterface.HowManyQuestions();
 
-            var Qnas = new List<QuestionAndAnswers>();
+            // Ask the user how many questions they'd like to add to the quiz.
+            int numberOfQuestions = UserInterface.HowManyQuestions();
 
+            // Gather the questions and their respective answers from the user
+            // and store them in the Qnas list.
+            List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
 
-            var ordered = Qnas.OrderBy(qbla => qbla.id);
-
-            //QuestionAndAnswers userQnA = UserInterface.UserQuestionsAndAnswers(answer, userQnA);
-
+            // Inform the user that the setup is complete and prompt them to start the quiz.
             UserInterface.ReadyToPlayQuiz();
-
         }
     }
 }
