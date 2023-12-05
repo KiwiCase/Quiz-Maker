@@ -101,25 +101,28 @@ namespace Quiz_Maker
             return questionsList;
         }
 
-        //public static bool AskQuestion(QuestionAndAnswers userQnA)
-        //{
-        //    string answers = userQnA.GetShuffledAnswers(out int correctIndex);
+        /// <summary>
+        /// Shuffles the answer choices for a question and returns the shuffled list along with the index of the correct answer.
+        /// </summary>
+        /// <param name="userQnA">The QuestionAndAnswers object representing the question.</param>
+        /// <param name="correctIndex">Out parameter to store the index of the correct answer in the shuffled list.</param>
+        /// <returns>The shuffled list of answer choices.</returns>
+        public static List<string> ShuffleAnswers(QuestionAndAnswers userQnA, out int correctIndex)
+        {
+            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
+            answers.Add(userQnA.CorrectAnswer);
 
-        //    Console.WriteLine($"Question: {userQnA.Question}");
-        //    Console.WriteLine("Answers:");
-        //    for (int i = 0; i < answers.Length; i++)
-        //    {
-        //        Console.WriteLine($"  {i + 1}. {answers[i]}");
-        //    }
-        //    int userPick = 0;
-        //    do
-        //    {
-        //        Console.WriteLine("Pick one answer:");
-        //        string input = Console.ReadLine();
-        //        int.TryParse(input, out userPick);
-        //    } while (userPick <= 0);
+            // Create a Random instance to shuffle the answer choices.
+            Random ran = new Random();
 
-        //    return userPick - 1 == correctIndex;
-        //}
+            // Shuffle the answer choices.
+            answers = answers.OrderBy(_ => ran.Next()).ToList();
+
+            // Find the index of the correct answer in the shuffled list.
+            correctIndex = answers.IndexOf(userQnA.CorrectAnswer);
+
+            return answers;
+        }
+
     }
 }
