@@ -26,10 +26,16 @@ namespace Quiz_Maker
         {
             int correctIndex;
             List<string> shuffledAnswers = ShuffleAnswers(userQnA, out correctIndex);
-            DisplayQuestionAndAnswers(userQnA, shuffledAnswers);
-            int userPick = ValidateUserInput(shuffledAnswers);
-            CheckAnswer(userPick, correctIndex, shuffledAnswers);
+            bool isCorrect = false;
+
+            while (!isCorrect)
+            {
+                DisplayQuestionAndAnswers(userQnA, shuffledAnswers);
+                int userPick = ValidateUserInput(shuffledAnswers);
+                isCorrect = CheckAnswer(userPick, correctIndex, shuffledAnswers);
+            }
         }
+
 
         // Shuffles the answers and returns the shuffled list along with the index of the correct answer.
         private static List<string> ShuffleAnswers(QuestionAndAnswers userQnA, out int correctIndex)
@@ -60,25 +66,39 @@ namespace Quiz_Maker
             {
                 Console.WriteLine("Pick one answer:");
                 string input = Console.ReadLine();
-                if (int.TryParse(input, out userPick) && userPick > 0 && userPick <= shuffledAnswers.Count)
+                if (int.TryParse(input, out userPick))
                 {
-                    break;
+                    if (userPick > 0 && userPick <= shuffledAnswers.Count)
+                    {
+                        return userPick;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice. Please select a number from the list.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
                 }
             }
-            return userPick;
         }
 
+
         // Checks if the user's answer is correct and provides feedback.
-        private static void CheckAnswer(int userPick, int correctIndex, List<string> shuffledAnswers)
+        private static bool CheckAnswer(int userPick, int correctIndex, List<string> shuffledAnswers)
         {
             if (userPick - 1 == correctIndex)
             {
                 Console.WriteLine("Correct!");
+                return true;
             }
             else
             {
-                Console.WriteLine($"Incorrect. The correct answer is: {shuffledAnswers[correctIndex]}");
+                Console.WriteLine($"Incorrect. Try again.");
+                return false;
             }
         }
+
     }
 }
