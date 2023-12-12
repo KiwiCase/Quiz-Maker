@@ -1,26 +1,17 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Quiz_Maker
 {
     public class Program
     {
-
+        // Entry point of the program.
         public static void Main(string[] args)
         {
-            // Display a welcome message to the user.
             UserInterface.WelcomeMessage();
-
-            // Ask the user how many questions they'd like to add to the quiz.
             int numberOfQuestions = UserInterface.HowManyQuestions();
-
-            // Gather the questions and their respective answers from the user
-            // and store them in the Qnas list.
             List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
-
-            // Inform the user that the setup is complete and prompt them to start the quiz.
             UserInterface.ReadyToPlayQuiz();
-
-            // Call the AskQuestion method using the UserInterface prefix.
             foreach (var qna in Qnas)
             {
                 AskQuestion(qna);
@@ -28,36 +19,59 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// Displays a question to the user and checks their answer.
+        /// Handles the process of asking a question, including shuffling answers and checking the user's input.
         /// </summary>
-        /// <param name="userQnA">The QuestionAndAnswers object representing the question.</param>
-        /// <returns>True if the user's answer is correct, false otherwise.</returns>
-        public static bool AskQuestion(QuestionAndAnswers userQnA)
+        /// <param name="userQnA">QuestionAndAnswers object containing the question and answers.</param>
+        public static void AskQuestion(QuestionAndAnswers userQnA)
         {
-            // Shuffle the answer choices and get the correct answer's index.
             int correctIndex;
-            List<string> shuffledAnswers = UserInterface.ShuffleAnswers(userQnA, out correctIndex);
+            List<string> shuffledAnswers = ShuffleAnswers(userQnA, out correctIndex);
+            DisplayQuestionAndAnswers(userQnA, shuffledAnswers);
+            int userPick = ValidateUserInput(shuffledAnswers);
+            CheckAnswer(userPick, correctIndex, shuffledAnswers);
+        }
 
+        // Shuffles the answers and returns the shuffled list along with the index of the correct answer.
+        private static List<string> ShuffleAnswers(QuestionAndAnswers userQnA, out int correctIndex)
+        {
+            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
+            answers.Add(userQnA.CorrectAnswer);
+            Random ran = new Random();
+            answers = answers.OrderBy(_ => ran.Next()).ToList();
+            correctIndex = answers.IndexOf(userQnA.CorrectAnswer);
+            return answers;
+        }
+
+        // Displays the question and the shuffled answer choices.
+        private static void DisplayQuestionAndAnswers(QuestionAndAnswers userQnA, List<string> shuffledAnswers)
+        {
             Console.WriteLine($"Question: {userQnA.Question}");
-
-            // Display shuffled answer choices to the user.
             for (int i = 0; i < shuffledAnswers.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {shuffledAnswers[i]}");
             }
+        }
 
-            int userPick = 0;
-            do
+        // Validates the user's input and ensures it's within the valid range.
+        private static int ValidateUserInput(List<string> shuffledAnswers)
+        {
+            int userPick;
+            while (true)
             {
                 Console.WriteLine("Pick one answer:");
                 string input = Console.ReadLine();
-                int.TryParse(input, out userPick);
-            } while (userPick <= 0 || userPick > shuffledAnswers.Count);
+                if (int.TryParse(input, out userPick) && userPick > 0 && userPick <= shuffledAnswers.Count)
+                {
+                    break;
+                }
+            }
+            return userPick;
+        }
 
-            // Check if the user's answer is correct.
-            bool isCorrect = userPick - 1 == correctIndex;
-
-            if (isCorrect)
+        // Checks if the user's answer is correct and provides feedback.
+        private static void CheckAnswer(int userPick, int correctIndex, List<string> shuffledAnswers)
+        {
+            if (userPick - 1 == correctIndex)
             {
                 Console.WriteLine("Correct!");
             }
@@ -65,10 +79,6 @@ namespace Quiz_Maker
             {
                 Console.WriteLine($"Incorrect. The correct answer is: {shuffledAnswers[correctIndex]}");
             }
-
-            return isCorrect;
         }
-
     }
 }
-
