@@ -8,14 +8,17 @@ namespace Quiz_Maker
 {
     public static class UserInterface
     {
+        /// <summary>
         /// Displays a welcome message to the user.
+        /// </summary>
         public static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Casey's Quintessential Quiz Maker");
         }
 
         /// <summary>
-        /// Asks the user for the number of questions they'd like in their quiz.
+        /// Prompts the user for the number of questions they want in their quiz.
+        /// Validates the input to ensure it's a valid integer and within the allowed range.
         /// </summary>
         /// <returns>Number of questions the user wants in the quiz.</returns>
         public static int HowManyQuestions()
@@ -32,7 +35,7 @@ namespace Quiz_Maker
         }
 
         /// <summary>
-        /// Prompts the user to input a question, its correct answer, and three incorrect answers.
+        /// Prompts the user to input a question and its answers (one correct, three incorrect).
         /// </summary>
         /// <returns>A QuestionAndAnswers object populated with the user's input.</returns>
         public static QuestionAndAnswers GetQuestionAndAnswers()
@@ -57,72 +60,29 @@ namespace Quiz_Maker
 
             return userQnA;
         }
+
         /// <summary>
-        /// Collects a series of questions and their respective answers from the user based on the given count.
+        /// Collects a specified number of questions and their answers from the user.
         /// </summary>
-        /// <param name="answer">The number of questions to be collected from the user.</param>
-        /// <param name="userQnA">An instance of QuestionAndAnswers to be populated.</param>
-        /// <returns>The last QuestionAndAnswers object populated with the user's input.</returns>
-        public static QuestionAndAnswers UserQuestionsAndAnswers(int answer, QuestionAndAnswers userQnA)
+        /// <param name="numberOfQuestions">The number of questions to collect.</param>
+        /// <returns>A list of QuestionAndAnswers objects.</returns>
+        public static List<QuestionAndAnswers> UserQuestionsAndAnswers(int numberOfQuestions)
         {
-            for (int i = 0; i < answer; i++)
+            List<QuestionAndAnswers> questionsList = new List<QuestionAndAnswers>();
+            for (int i = 0; i < numberOfQuestions; i++)
             {
-                userQnA = UserInterface.GetQuestionAndAnswers();
+                questionsList.Add(GetQuestionAndAnswers());
             }
-            return userQnA;
+            return questionsList;
         }
 
         /// <summary>
-        /// Informs the user that the setup is complete and prompts them to start the quiz.
+        /// Informs the user that the quiz setup is complete and prompts them to start the quiz.
         /// </summary>
         public static void ReadyToPlayQuiz()
         {
             Console.WriteLine("All set! Press Enter to start the Quiz!");
             Console.ReadKey();
         }
-
-        public static List<QuestionAndAnswers> UserQuestionsAndAnswers(int answer)
-        {
-            // Create a list to store the questions and their respective answers.
-            List<QuestionAndAnswers> questionsList = new List<QuestionAndAnswers>();
-
-            // Loop based on the number of questions the user wants to add.
-            for (int i = 0; i < answer; i++)
-            {
-                // Prompt the user to input a question, correct answer, and three incorrect answers.
-                // Then store the result in the userQnA object.
-                QuestionAndAnswers userQnA = UserInterface.GetQuestionAndAnswers();
-
-                // Add the collected question and answers to the list.
-                questionsList.Add(userQnA);
-            }
-
-            // Return the list of questions and answers.
-            return questionsList;
-        }
-
-        /// <summary>
-        /// Shuffles the answer choices for a question and returns the shuffled list along with the index of the correct answer.
-        /// </summary>
-        /// <param name="userQnA">The QuestionAndAnswers object representing the question.</param>
-        /// <param name="correctIndex">Out parameter to store the index of the correct answer in the shuffled list.</param>
-        /// <returns>The shuffled list of answer choices.</returns>
-        public static List<string> ShuffleAnswers(QuestionAndAnswers userQnA, out int correctIndex)
-        {
-            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
-            answers.Add(userQnA.CorrectAnswer);
-
-            // Create a Random instance to shuffle the answer choices.
-            Random ran = new Random();
-
-            // Shuffle the answer choices.
-            answers = answers.OrderBy(_ => ran.Next()).ToList();
-
-            // Find the index of the correct answer in the shuffled list.
-            correctIndex = answers.IndexOf(userQnA.CorrectAnswer);
-
-            return answers;
-        }
-
     }
 }
