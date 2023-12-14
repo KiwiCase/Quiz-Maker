@@ -3,6 +3,10 @@ namespace Quiz_Maker
 {
     public class QuestionAndAnswers
     {
+        public string Question { get; }
+        public string CorrectAnswer { get; set; }
+        public List<string> IncorrectAnswers { get; }
+        public int id;
 
         public QuestionAndAnswers(string question, string correctAnswer)
         {
@@ -11,10 +15,6 @@ namespace Quiz_Maker
             IncorrectAnswers = new List<string>();
 
         }
-        public string Question { get; }
-        public string CorrectAnswer { get; set; }
-        public List<string> IncorrectAnswers { get; }
-        public int id;
 
     }
 
