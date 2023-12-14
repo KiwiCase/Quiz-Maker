@@ -16,18 +16,6 @@ namespace Quiz_Maker
         public List<string> IncorrectAnswers { get; }
         public int id;
 
-        static readonly Random ran = new Random();
-
-        //public string GetShuffledAnswers(out int correctIndex)
-        //{        
-        //    List<string> list = IncorrectAnswers.ToList();
-        //    list.Add(CorrectAnswer);
-        //    Random ran = new Random();
-        //    List<string> shuffled = list.OrderBy(_ => ran.Next()).ToList();  // shuffles list
-        //    correctIndex = list.IndexOf(CorrectAnswer);
-        //    return list;
-        //}
-
     }
 
 }
