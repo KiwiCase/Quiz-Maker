@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Quiz_Maker
 {
     public class Program
     {
+        private static readonly Random random = new Random(); // Static Random instance
+
         // Entry point of the program.
         public static void Main(string[] args)
         {
@@ -36,14 +39,12 @@ namespace Quiz_Maker
             }
         }
 
-
         // Shuffles the answers and returns the shuffled list along with the index of the correct answer.
         private static List<string> ShuffleAnswers(QuestionAndAnswers userQnA, out int correctIndex)
         {
             List<string> answers = new List<string>(userQnA.IncorrectAnswers);
             answers.Add(userQnA.CorrectAnswer);
-            Random ran = new Random();
-            answers = answers.OrderBy(_ => ran.Next()).ToList();
+            answers = answers.OrderBy(_ => random.Next()).ToList(); // Use shared Random instance
             correctIndex = answers.IndexOf(userQnA.CorrectAnswer);
             return answers;
         }
@@ -84,7 +85,6 @@ namespace Quiz_Maker
             }
         }
 
-
         // Checks if the user's answer is correct and provides feedback.
         private static bool CheckAnswer(int userPick, int correctIndex, List<string> shuffledAnswers)
         {
@@ -99,6 +99,5 @@ namespace Quiz_Maker
                 return false;
             }
         }
-
     }
 }
