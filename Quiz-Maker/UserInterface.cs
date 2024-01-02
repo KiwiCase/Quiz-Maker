@@ -40,7 +40,6 @@ namespace Quiz_Maker
             return answer;
         }
 
-
         /// <summary>
         /// Prompts the user to input a question and its answers (one correct, three incorrect).
         /// </summary>
