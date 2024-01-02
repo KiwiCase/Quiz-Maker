@@ -18,21 +18,31 @@ namespace Quiz_Maker
 
         /// <summary>
         /// Prompts the user for the number of questions they want in their quiz.
-        /// Validates the input to ensure it's a valid integer and within the allowed range.
+        /// Uses an infinite loop to validate the input, ensuring it's a valid integer and within the allowed range.
+        /// Exits the loop once a valid input is received.
         /// </summary>
-        /// <returns>Number of questions the user wants in the quiz.</returns>
+        /// <returns>The number of questions the user wants in the quiz, not exceeding the maximum limit.</returns>
         public static int HowManyQuestions()
         {
+            const int MaxQuestions = 5; // Constant for maximum allowed questions
             int answer = 0;
-            Console.WriteLine("How many questions would you like in your Quiz? \n5 is the maximum questions allowed: ");
-            string input = Console.ReadLine();
-            while (!Int32.TryParse(input, out answer) || answer > 5)
+
+            Console.WriteLine($"How many questions would you like in your Quiz? \n{MaxQuestions} is the maximum questions allowed: ");
+            while (true) // Infinite loop, exits only when valid input is received
             {
-                Console.WriteLine("This is not a valid input. \nHow many questions would you like in your Quiz? \n5 is the maximum questions allowed: ");
-                input = Console.ReadLine();
+                string input = Console.ReadLine();
+                if (Int32.TryParse(input, out answer) && answer > 0 && answer <= MaxQuestions)
+                {
+                    break; // Exit loop when input is valid and within the allowed range
+                }
+                else
+                {
+                    Console.WriteLine($"This is not a valid input. \nHow many questions would you like in your Quiz? \n{MaxQuestions} is the maximum questions allowed: ");
+                }
             }
             return answer;
         }
+
 
         /// <summary>
         /// Prompts the user to input a question and its answers (one correct, three incorrect).
