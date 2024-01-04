@@ -44,13 +44,18 @@
             {
                 List<string> answers = new List<string>(userQnA.IncorrectAnswers);
                 answers.Add(userQnA.CorrectAnswer);
-                answers = answers.OrderBy(_ => random.Next()).ToList(); // Use shared Random instance
+                int n = answers.Count;
+                for (int i = n - 1; i > 0; i--)
+                {
+                    int j = random.Next(i + 1);
+                    (answers[j], answers[i]) = (answers[i], answers[j]);
+                }
                 correctIndex = answers.IndexOf(userQnA.CorrectAnswer);
                 return answers;
-            }
+        }
 
-            // Displays the question and the shuffled answer choices.
-            private static void DisplayQuestionAndAnswers(QuestionAndAnswers userQnA, List<string> shuffledAnswers)
+        // Displays the question and the shuffled answer choices.
+        private static void DisplayQuestionAndAnswers(QuestionAndAnswers userQnA, List<string> shuffledAnswers)
             {
                 Console.WriteLine($"Question: {userQnA.Question}");
                 for (int i = 0; i < shuffledAnswers.Count; i++)
