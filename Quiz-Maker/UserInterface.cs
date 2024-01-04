@@ -52,17 +52,17 @@ namespace Quiz_Maker
             Console.WriteLine("Please type the correct answer: ");
             string correctAnswer = Console.ReadLine();
 
-            Console.WriteLine("Please type your 1st false answer: ");
-            string falseAnswerOne = Console.ReadLine();
-
-            Console.WriteLine("Please type your 2nd false answer: ");
-            string falseAnswerTwo = Console.ReadLine();
-
-            Console.WriteLine("Please type your 3rd false answer: ");
-            string falseAnswerThree = Console.ReadLine();
+            // Loop to collect the incorrect answers
+            List<string> incorrectAnswers = new List<string>();
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine($"Please type your {i} false answer: ");
+                string falseAnswer = Console.ReadLine();
+                incorrectAnswers.Add(falseAnswer);
+            }
 
             QuestionAndAnswers userQnA = new QuestionAndAnswers(userQuestion, correctAnswer);
-            userQnA.IncorrectAnswers.AddRange(new string[] { falseAnswerOne, falseAnswerTwo, falseAnswerThree });
+            userQnA.IncorrectAnswers.AddRange(incorrectAnswers);
 
             return userQnA;
         }
