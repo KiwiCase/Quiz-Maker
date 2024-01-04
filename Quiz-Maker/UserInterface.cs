@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace Quiz_Maker
 {
@@ -42,6 +42,7 @@ namespace Quiz_Maker
 
         /// <summary>
         /// Prompts the user to input a question and its answers (one correct, three incorrect).
+        /// Uses a loop to collect the incorrect answers, improving code maintainability and flexibility.
         /// </summary>
         /// <returns>A QuestionAndAnswers object populated with the user's input.</returns>
         public static QuestionAndAnswers GetQuestionAndAnswers()
@@ -52,11 +53,10 @@ namespace Quiz_Maker
             Console.WriteLine("Please type the correct answer: ");
             string correctAnswer = Console.ReadLine();
 
-            // Loop to collect the incorrect answers
             List<string> incorrectAnswers = new List<string>();
             for (int i = 1; i <= 3; i++)
             {
-                Console.WriteLine($"Please type your {i} false answer: ");
+                Console.WriteLine($"Please type your {Ordinal(i)} false answer: ");
                 string falseAnswer = Console.ReadLine();
                 incorrectAnswers.Add(falseAnswer);
             }
@@ -89,6 +89,80 @@ namespace Quiz_Maker
         {
             Console.WriteLine("All set! Press Enter to start the Quiz!");
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Displays the question and the shuffled answer choices.
+        /// </summary>
+        /// <param name="userQnA">QuestionAndAnswers object containing the question and answers.</param>
+        /// <param name="shuffledAnswers">List of shuffled answers.</param>
+        public static void DisplayQuestionAndAnswers(QuestionAndAnswers userQnA, List<string> shuffledAnswers)
+        {
+            Console.WriteLine($"Question: {userQnA.Question}");
+            for (int i = 0; i < shuffledAnswers.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {shuffledAnswers[i]}");
+            }
+        }
+
+        /// <summary>
+        /// Validates the user's input and ensures it's within the valid range.
+        /// </summary>
+        /// <param name="shuffledAnswers">List of shuffled answers for range checking.</param>
+        /// <returns>The valid user input as an integer.</returns>
+        public static int ValidateUserInput(List<string> shuffledAnswers)
+        {
+            int userPick;
+            while (true)
+            {
+                Console.WriteLine("Pick one answer:");
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out userPick))
+                {
+                    if (userPick > 0 && userPick <= shuffledAnswers.Count)
+                    {
+                        return userPick;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice. Please select a number from the list.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Converts an integer to its ordinal representation (e.g., 1st, 2nd, 3rd).
+        /// </summary>
+        /// <param name="number">The number to be converted.</param>
+        /// <returns>Ordinal string representation of the number.</returns>
+        private static string Ordinal(int number)
+        {
+            if (number <= 0) return number.ToString();
+
+            switch (number % 100)
+            {
+                case 11:
+                case 12:
+                case 13:
+                    return number + "th";
+            }
+
+            switch (number % 10)
+            {
+                case 1:
+                    return number + "st";
+                case 2:
+                    return number + "nd";
+                case 3:
+                    return number + "rd";
+                default:
+                    return number + "th";
+            }
         }
     }
 }
