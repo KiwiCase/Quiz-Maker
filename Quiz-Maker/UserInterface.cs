@@ -136,6 +136,25 @@ namespace Quiz_Maker
         }
 
         /// <summary>
+        /// Prompts the user with a question and validates their answer in a loop until a valid answer is provided.
+        /// </summary>
+        /// <param name="userQnA">The question and answers object.</param>
+        /// <param name="shuffledAnswers">The list of shuffled answers.</param>
+        /// <returns>The user's selected answer index.</returns>
+        public static int AskAndValidateQuestion(QuestionAndAnswers userQnA, List<string> shuffledAnswers)
+        {
+            while (true)
+            {
+                DisplayQuestionAndAnswers(userQnA, shuffledAnswers);
+                int userPick = ValidateUserInput(shuffledAnswers);
+                if (userPick != -1)  // This will always be a valid input
+                {
+                    return userPick;
+                }
+            }
+        }
+
+        /// <summary>
         /// Converts an integer to its ordinal representation (e.g., 1st, 2nd, 3rd).
         /// </summary>
         /// <param name="number">The number to be converted.</param>
@@ -163,6 +182,15 @@ namespace Quiz_Maker
                 default:
                     return number + "th";
             }
+        }
+
+        /// <summary>
+        /// Displays feedback to the user based on whether their answer was correct or incorrect.
+        /// </summary>
+        /// <param name="isCorrect">Indicates whether the user's answer was correct.</param>
+        public static void ProvideFeedback(bool isCorrect)
+        {
+            Console.WriteLine(isCorrect ? "Correct! You have an IQ of 1,000,000 and are sexy beast lololol" : "Incorrect. Try again loser lololol.");
         }
     }
 }

@@ -12,23 +12,14 @@ namespace Quiz_Maker
             int numberOfQuestions = UserInterface.HowManyQuestions();
             List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
             UserInterface.ReadyToPlayQuiz();
+
             foreach (var qna in Qnas)
             {
-                AskQuestion(qna);
-            }
-        }
+                int userPick = UserInterface.AskAndValidateQuestion(qna, QuizLogic.ShuffleAnswers(qna, out _));
+                bool isCorrect = QuizLogic.CheckUserAnswer(qna, userPick);
 
-        public static void AskQuestion(QuestionAndAnswers userQnA)
-        {
-            int correctIndex;
-            List<string> shuffledAnswers = QuizLogic.ShuffleAnswers(userQnA, out correctIndex);
-            bool isCorrect = false;
-
-            while (!isCorrect)
-            {
-                UserInterface.DisplayQuestionAndAnswers(userQnA, shuffledAnswers);
-                int userPick = UserInterface.ValidateUserInput(shuffledAnswers);
-                isCorrect = QuizLogic.CheckAnswer(userPick, correctIndex);
+                // Use UserInterface class to provide feedback to the user
+                UserInterface.ProvideFeedback(isCorrect);
             }
         }
     }
