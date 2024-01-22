@@ -47,9 +47,16 @@ namespace Quiz_Maker
         /// <returns>True if the user's answer is correct; otherwise, false.</returns>
         public static bool CheckUserAnswer(QuestionAndAnswers userQnA, int userPick)
         {
-            int correctIndex;
-            List<string> shuffledAnswers = ShuffleAnswers(userQnA, out correctIndex);
-            return CheckAnswer(userPick, correctIndex);
+            int correctIndex = GetCorrectAnswerIndex(userQnA);
+            return userPick - 1 == correctIndex; // Adjusted as array indices start at 0
         }
+
+        private static int GetCorrectAnswerIndex(QuestionAndAnswers userQnA)
+        {
+            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
+            answers.Add(userQnA.CorrectAnswer);
+            return answers.IndexOf(userQnA.CorrectAnswer);
+        }
+
     }
 }
