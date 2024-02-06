@@ -45,11 +45,11 @@ namespace Quiz_Maker
         /// <param name="userQnA">The question and its answers.</param>
         /// <param name="userPick">The index of the user's selected answer.</param>
         /// <returns>True if the user's answer is correct; otherwise, false.</returns>
-        public static bool CheckUserAnswer(QuestionAndAnswers userQnA, int userPick)
+        public static bool CheckUserAnswer(QuestionAndAnswers userQnA, int userPick, int correctIndex)
         {
-            int correctIndex = GetCorrectAnswerIndex(userQnA);
             return userPick - 1 == correctIndex; // Adjusted as array indices start at 0
         }
+
 
         private static int GetCorrectAnswerIndex(QuestionAndAnswers userQnA)
         {
