@@ -15,8 +15,10 @@ namespace Quiz_Maker
 
             foreach (var qna in Qnas)
             {
-                int userPick = UserInterface.AskAndValidateQuestion(qna, QuizLogic.ShuffleAnswers(qna, out _));
-                bool isCorrect = QuizLogic.CheckUserAnswer(qna, userPick);
+                int correctIndex;
+                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna, out correctIndex);
+                int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
+                bool isCorrect = QuizLogic.CheckUserAnswer(qna, userPick, correctIndex);
 
                 // Use UserInterface class to provide feedback to the user
                 UserInterface.ProvideFeedback(isCorrect);

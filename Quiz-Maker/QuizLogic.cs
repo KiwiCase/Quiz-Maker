@@ -50,13 +50,5 @@ namespace Quiz_Maker
             return userPick - 1 == correctIndex; // Adjusted as array indices start at 0
         }
 
-
-        private static int GetCorrectAnswerIndex(QuestionAndAnswers userQnA)
-        {
-            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
-            answers.Add(userQnA.CorrectAnswer);
-            return answers.IndexOf(userQnA.CorrectAnswer);
-        }
-
     }
 }
