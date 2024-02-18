@@ -5,7 +5,6 @@ namespace Quiz_Maker
 {
     public class Program
     {
-        // Entry point of the program.
         public static void Main(string[] args)
         {
             UserInterface.WelcomeMessage();
@@ -15,12 +14,10 @@ namespace Quiz_Maker
 
             foreach (var qna in Qnas)
             {
-                int correctIndex;
-                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna, out correctIndex);
+                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
                 int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
-                bool isCorrect = QuizLogic.CheckUserAnswer(qna, userPick, correctIndex);
+                bool isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
 
-                // Use UserInterface class to provide feedback to the user
                 UserInterface.ProvideFeedback(isCorrect);
             }
         }
