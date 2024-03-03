@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json;
+
 namespace Quiz_Maker
 {
     public class QuestionAndAnswers
@@ -14,6 +16,18 @@ namespace Quiz_Maker
             CorrectAnswer = correctAnswer;
             IncorrectAnswers = new List<string>();
 
+        }
+
+        public static void SaveQuestionsToFile(List<QuestionAndAnswers> questions, string filePath)
+        {
+            string jsonString = JsonConvert.SerializeObject(questions, Formatting.Indented);
+            File.WriteAllText(filePath, jsonString);
+        }
+
+        public static List<QuestionAndAnswers> LoadQuestionsFromFile(string filePath)
+        {
+            string jsonString = File.ReadAllText(filePath);
+            return JsonConvert.DeserializeObject<List<QuestionAndAnswers>>(jsonString);
         }
 
     }

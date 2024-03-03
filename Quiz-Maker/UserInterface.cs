@@ -202,5 +202,32 @@ namespace Quiz_Maker
             }
             return isCorrect;
         }
+
+        /// <summary>
+        /// Prompts the user after completing the quiz to see if they want to save their quiz for later use.
+        /// If the user chooses to save, they are asked for a file name, and the quiz is saved in JSON format.
+        /// </summary>
+        /// <param name="Qnas">The list of QuestionAndAnswers objects to save.</param>
+        public static void PromptAndSaveQuiz(List<QuestionAndAnswers> Qnas)
+        {
+            Console.WriteLine("Do you want to save this quiz for later? (yes/no)");
+            string saveResponse = Console.ReadLine().Trim().ToLower();
+            if (saveResponse == "yes" || saveResponse == "y")
+            {
+                Console.WriteLine("Enter a file name to save your quiz: ");
+                string fileName = Console.ReadLine().Trim();
+                string filePath = $"{fileName}.json"; // Ensures the file is saved with .json extension
+
+                try
+                {
+                    QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
+                    Console.WriteLine($"Quiz saved successfully to {filePath}.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while saving the file: {ex.Message}");
+                }
+            }
+        }
     }
 }

@@ -25,6 +25,10 @@ namespace Quiz_Maker
                     isCorrect = UserInterface.ProvideFeedback(isCorrect);
                 }
             }
+
+            // Call after the quiz is completed
+            UserInterface.PromptAndSaveQuiz(Qnas);
+
         }
     }
 }
