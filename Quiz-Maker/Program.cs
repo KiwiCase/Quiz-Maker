@@ -14,11 +14,16 @@ namespace Quiz_Maker
 
             foreach (var qna in Qnas)
             {
-                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
-                int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
-                bool isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
+                bool isCorrect = false;
+                while (!isCorrect) // Loop until the answer is correct
+                {
+                    var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
+                    int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
+                    isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
 
-                UserInterface.ProvideFeedback(isCorrect);
+                    // Provide feedback and allow for reattempt if incorrect
+                    isCorrect = UserInterface.ProvideFeedback(isCorrect);
+                }
             }
         }
     }

@@ -186,11 +186,21 @@ namespace Quiz_Maker
 
         /// <summary>
         /// Displays feedback to the user based on whether their answer was correct or incorrect.
+        /// Instead of ending the quiz on an incorrect answer, it allows for repeated attempts.
         /// </summary>
         /// <param name="isCorrect">Indicates whether the user's answer was correct.</param>
-        public static void ProvideFeedback(bool isCorrect)
+        /// <returns>A boolean indicating if the user's answer was correct.</returns>
+        public static bool ProvideFeedback(bool isCorrect)
         {
-            Console.WriteLine(isCorrect ? "Correct! You have an IQ of 1,000,000 and are sexy beast lololol" : "Incorrect. Try again loser lololol.");
+            if (isCorrect)
+            {
+                Console.WriteLine("Correct! You have an IQ of 1,000,000 and are sexy beast lololol");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect. Try again loser lololol.");
+            }
+            return isCorrect;
         }
     }
 }
