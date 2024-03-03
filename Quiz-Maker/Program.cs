@@ -14,10 +14,10 @@ namespace Quiz_Maker
 
             foreach (var qna in Qnas)
             {
+                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
                 bool isCorrect = false;
                 while (!isCorrect) // Loop until the answer is correct
                 {
-                    var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
                     int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
                     isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
 
