@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     public static class UserInterface
     {
@@ -233,6 +230,7 @@ namespace Quiz_Maker
 
                 try
                 {
+                    // Directly call the SaveQuestionsToFile method from the QuestionAndAnswers class
                     QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
                     Console.WriteLine($"Quiz saved successfully to {filePath}.");
                 }
@@ -272,6 +270,40 @@ namespace Quiz_Maker
                 bool isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
                 ProvideFeedback(isCorrect);
             }
+        }
+
+        public static void EditQuiz()
+        {
+            string filePath = AskForQuizFilePath();
+            var Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
+
+            Console.WriteLine("Select a question to edit:");
+            for (int i = 0; i < Qnas.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}: {Qnas[i].Question}");
+            }
+            int choice = Convert.ToInt32(Console.ReadLine()) - 1;
+
+            // Assuming a method to edit a question is implemented in QuestionAndAnswers
+            Qnas[choice] = EditQuestion(Qnas[choice]);
+
+            // Save the updated list back to the file
+            QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
+        }
+       
+        private static QuestionAndAnswers EditQuestion(QuestionAndAnswers qna)
+        {
+
+            Console.WriteLine("Editing Question: ");
+            Console.WriteLine("Current Question: " + qna.Question);
+            Console.WriteLine("Enter new question (leave blank to keep current): ");
+            string newQuestion = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newQuestion))
+            {
+                qna.Question = newQuestion; // Ensure Question property has a public setter
+            }
+
+            return qna;
         }
     }
 }
