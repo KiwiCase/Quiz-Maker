@@ -2,7 +2,7 @@ namespace Quiz_Maker
 {
     public static class QuizLogic
     {
-        private static readonly Random random = new Random();
+        private static readonly Random random = new();
 
         /// <summary>
         /// Shuffles the answers for a given question and returns the shuffled list.
@@ -12,8 +12,7 @@ namespace Quiz_Maker
         /// <returns>A list of shuffled answers.</returns>
         public static List<string> ShuffleAnswers(QuestionAndAnswers userQnA)
         {
-            List<string> answers = new List<string>(userQnA.IncorrectAnswers);
-            answers.Add(userQnA.CorrectAnswer);
+            List<string> answers = new(userQnA.IncorrectAnswers) { userQnA.CorrectAnswer };
             int n = answers.Count;
             for (int i = n - 1; i > 0; i--)
             {

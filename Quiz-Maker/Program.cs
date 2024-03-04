@@ -2,41 +2,49 @@
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             UserInterface.WelcomeMessage();
 
-            // Prompt user to choose a mode: Create/Update Quiz or Play Quiz
-            int mode = UserInterface.ChooseMode();
-
-            if (mode == 1)
+            while (true) // Continuously run until the user decides to exit.
             {
-                // Create/Update Quiz Mode
-                int numberOfQuestions = UserInterface.HowManyQuestions();
-                List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
-                UserInterface.ReadyToPlayQuiz();
+                int mode = UserInterface.ChooseMode();
 
-                foreach (var qna in Qnas)
+                switch (mode)
                 {
-                    var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
-                    bool isCorrect = false;
-                    while (!isCorrect)
-                    {
-                        int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
-                        isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
-                        isCorrect = UserInterface.ProvideFeedback(isCorrect);
-                    }
-                }
+                    case 1:
+                        // Mode for creating or updating a quiz
+                        var numberOfQuestions = UserInterface.HowManyQuestions();
+                        var Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
+                        UserInterface.ReadyToPlayQuiz();
 
-                // Option to save the quiz
-                UserInterface.PromptAndSaveQuiz(Qnas);
-            }
-                else if (mode == 2)
-            {
-                // Play Mode
-                string filePath = UserInterface.AskForQuizFilePath();
-                List<QuestionAndAnswers> Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
-                UserInterface.PlayQuiz(Qnas);
+                        foreach (var qna in Qnas)
+                        {
+                            var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
+                            bool isCorrect = false;
+                            while (!isCorrect)
+                            {
+                                var userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
+                                isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
+                                UserInterface.ProvideFeedback(isCorrect);
+                            }
+                        }
+
+                        UserInterface.PromptAndSaveQuiz(Qnas);
+                        break;
+
+                    case 2:
+                        // Mode for playing a quiz from an existing file
+                        var filePath = UserInterface.AskForQuizFilePath();
+                        Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
+                        UserInterface.PlayQuiz(Qnas);
+                        break;
+
+                    case 3:
+                        // Option to exit the application
+                        Console.WriteLine("Exiting the application. Thank you for using Quiz Maker.");
+                        return; // Exit the Main method, thus ending the program.
+                }
             }
         }
     }

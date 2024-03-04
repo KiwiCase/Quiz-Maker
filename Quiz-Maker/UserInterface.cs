@@ -48,7 +48,7 @@ namespace Quiz_Maker
         public static int HowManyQuestions()
         {
             const int MaxQuestions = 5; // Constant for maximum allowed questions
-            int answer = 0;
+            int answer;
 
             Console.WriteLine($"How many questions would you like in your Quiz? \n{MaxQuestions} is the maximum questions allowed: ");
             while (true) // Infinite loop, exits only when valid input is received
@@ -79,7 +79,7 @@ namespace Quiz_Maker
             Console.WriteLine("Please type the correct answer: ");
             string correctAnswer = Console.ReadLine();
 
-            List<string> incorrectAnswers = new List<string>();
+            List<string> incorrectAnswers = new();
             for (int i = 1; i <= 3; i++)
             {
                 Console.WriteLine($"Please type your {Ordinal(i)} false answer: ");
@@ -87,7 +87,7 @@ namespace Quiz_Maker
                 incorrectAnswers.Add(falseAnswer);
             }
 
-            QuestionAndAnswers userQnA = new QuestionAndAnswers(userQuestion, correctAnswer);
+            QuestionAndAnswers userQnA = new(userQuestion, correctAnswer);
             userQnA.IncorrectAnswers.AddRange(incorrectAnswers);
 
             return userQnA;
@@ -100,7 +100,7 @@ namespace Quiz_Maker
         /// <returns>A list of QuestionAndAnswers objects.</returns>
         public static List<QuestionAndAnswers> UserQuestionsAndAnswers(int numberOfQuestions)
         {
-            List<QuestionAndAnswers> questionsList = new List<QuestionAndAnswers>();
+            List<QuestionAndAnswers> questionsList = new();
             for (int i = 0; i < numberOfQuestions; i++)
             {
                 questionsList.Add(GetQuestionAndAnswers());
@@ -138,12 +138,11 @@ namespace Quiz_Maker
         /// <returns>The valid user input as an integer.</returns>
         public static int ValidateUserInput(List<string> shuffledAnswers)
         {
-            int userPick;
             while (true)
             {
                 Console.WriteLine("Pick one answer:");
                 string input = Console.ReadLine();
-                if (int.TryParse(input, out userPick))
+                if (int.TryParse(input, out int userPick)) // Inline declaration
                 {
                     if (userPick > 0 && userPick <= shuffledAnswers.Count)
                     {
@@ -160,6 +159,7 @@ namespace Quiz_Maker
                 }
             }
         }
+
 
         /// <summary>
         /// Prompts the user with a question and validates their answer in a loop until a valid answer is provided.
@@ -189,25 +189,19 @@ namespace Quiz_Maker
         {
             if (number <= 0) return number.ToString();
 
-            switch (number % 100)
+            int lastTwoDigits = number % 100;
+            int lastDigit = number % 10;
+            return (lastTwoDigits) switch
             {
-                case 11:
-                case 12:
-                case 13:
-                    return number + "th";
-            }
-
-            switch (number % 10)
-            {
-                case 1:
-                    return number + "st";
-                case 2:
-                    return number + "nd";
-                case 3:
-                    return number + "rd";
-                default:
-                    return number + "th";
-            }
+                11 or 12 or 13 => number + "th",
+                _ => (lastDigit) switch
+                {
+                    1 => number + "st",
+                    2 => number + "nd",
+                    3 => number + "rd",
+                    _ => number + "th",
+                }
+            };
         }
 
         /// <summary>
