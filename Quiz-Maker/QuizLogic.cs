@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Quiz_Maker
 {
     public static class QuizLogic

@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Quiz_Maker
 {
@@ -17,7 +16,6 @@ namespace Quiz_Maker
             IncorrectAnswers = new List<string>();
 
         }
-
         public static void SaveQuestionsToFile(List<QuestionAndAnswers> questions, string filePath)
         {
             string jsonString = JsonConvert.SerializeObject(questions, Formatting.Indented);
@@ -29,9 +27,7 @@ namespace Quiz_Maker
             string jsonString = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<QuestionAndAnswers>>(jsonString);
         }
-
     }
-
 }
 
 

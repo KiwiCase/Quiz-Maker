@@ -14,6 +14,32 @@ namespace Quiz_Maker
         }
 
         /// <summary>
+        /// Prompts the user to select between creating a new quiz, loading an existing quiz, or quitting the application.
+        /// Continuously requests input until a valid option is entered. Returns the chosen mode or exits the application.
+        /// </summary>
+        /// <returns>The user's chosen mode as an integer, where 1 represents creating a new quiz, 2 represents loading an existing quiz, and 3 to quit.</returns>
+        public static int ChooseMode()
+        {
+            Console.WriteLine("Select an option: \n1. Create New Quiz\n2. Load Existing Quiz\n3. Quit");
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out int mode))
+                {
+                    if (mode == 1 || mode == 2)
+                    {
+                        return mode;
+                    }
+                    else if (mode == 3)
+                    {
+                        Console.WriteLine("Exiting the application. Goodbye!");
+                        Environment.Exit(0); // Exits the application
+                    }
+                }
+                Console.WriteLine("Invalid selection. Please enter 1 to create a new quiz, 2 to load an existing quiz, or 3 to quit.");
+            }
+        }
+
+        /// <summary>
         /// Prompts the user for the number of questions they want in their quiz.
         /// Uses an infinite loop to validate the input, ensuring it's a valid integer and within the allowed range.
         /// Exits the loop once a valid input is received.
@@ -192,14 +218,7 @@ namespace Quiz_Maker
         /// <returns>A boolean indicating if the user's answer was correct.</returns>
         public static bool ProvideFeedback(bool isCorrect)
         {
-            if (isCorrect)
-            {
-                Console.WriteLine("Correct! You have an IQ of 1,000,000 and are sexy beast lololol");
-            }
-            else
-            {
-                Console.WriteLine("Incorrect. Try again loser lololol.");
-            }
+            Console.WriteLine(isCorrect ? "Correct! You have an IQ of 1,000,000 and are a sexy beast lololol" : "Incorrect. Try again loser lololol.");
             return isCorrect;
         }
 
@@ -227,6 +246,37 @@ namespace Quiz_Maker
                 {
                     Console.WriteLine($"An error occurred while saving the file: {ex.Message}");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Asks the user for the file path of an existing quiz to play.
+        /// </summary>
+        /// <returns>The file path of the quiz.</returns>
+        public static string AskForQuizFilePath()
+        {
+            Console.WriteLine("Enter the file path of the quiz you want to play:");
+            return Console.ReadLine().Trim();
+        }
+
+        /// <summary>
+        /// Conducts the quiz by displaying questions and validating user answers.
+        /// </summary>
+        /// <param name="Qnas">A list of questions and answers loaded from a file.</param>
+        public static void PlayQuiz(List<QuestionAndAnswers> Qnas)
+        {
+            foreach (var qna in Qnas)
+            {
+                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
+                Console.WriteLine($"Question: {qna.Question}");
+                for (int i = 0; i < shuffledAnswers.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {shuffledAnswers[i]}");
+                }
+
+                int userPick = ValidateUserInput(shuffledAnswers);
+                bool isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
+                ProvideFeedback(isCorrect);
             }
         }
     }

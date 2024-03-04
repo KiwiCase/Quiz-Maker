@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     internal class AnswerInfo
     {

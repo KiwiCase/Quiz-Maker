@@ -1,34 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Quiz_Maker
+﻿namespace Quiz_Maker
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             UserInterface.WelcomeMessage();
-            int numberOfQuestions = UserInterface.HowManyQuestions();
-            List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
-            UserInterface.ReadyToPlayQuiz();
 
-            foreach (var qna in Qnas)
+            // Prompt user to choose a mode: Create/Update Quiz or Play Quiz
+            int mode = UserInterface.ChooseMode();
+
+            if (mode == 1)
             {
-                var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
-                bool isCorrect = false;
-                while (!isCorrect) // Loop until the answer is correct
+                // Create/Update Quiz Mode
+                int numberOfQuestions = UserInterface.HowManyQuestions();
+                List<QuestionAndAnswers> Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
+                UserInterface.ReadyToPlayQuiz();
+
+                foreach (var qna in Qnas)
                 {
-                    int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
-                    isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
-
-                    // Provide feedback and allow for reattempt if incorrect
-                    isCorrect = UserInterface.ProvideFeedback(isCorrect);
+                    var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
+                    bool isCorrect = false;
+                    while (!isCorrect)
+                    {
+                        int userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
+                        isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
+                        isCorrect = UserInterface.ProvideFeedback(isCorrect);
+                    }
                 }
+
+                // Option to save the quiz
+                UserInterface.PromptAndSaveQuiz(Qnas);
             }
-
-            // Call after the quiz is completed
-            UserInterface.PromptAndSaveQuiz(Qnas);
-
+                else if (mode == 2)
+            {
+                // Play Mode
+                string filePath = UserInterface.AskForQuizFilePath();
+                List<QuestionAndAnswers> Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
+                UserInterface.PlayQuiz(Qnas);
+            }
         }
     }
 }
