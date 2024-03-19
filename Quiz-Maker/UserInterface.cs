@@ -277,23 +277,50 @@
             string filePath = AskForQuizFilePath();
             var Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
 
-            Console.WriteLine("Select a question to edit:");
+            Console.WriteLine("Select a question to edit (or press Enter to skip):");
             for (int i = 0; i < Qnas.Count; i++)
             {
                 Console.WriteLine($"{i + 1}: {Qnas[i].Question}");
             }
-            int choice = Convert.ToInt32(Console.ReadLine()) - 1;
+            string input = Console.ReadLine();
 
-            // Assuming a method to edit a question is implemented in QuestionAndAnswers
+            // Check if the user entered a choice to edit a question
+            if (int.TryParse(input, out int choice) && choice >= 1 && choice <= Qnas.Count)
+            {
+                // Adjust choice to be zero-based for the index
+                choice -= 1;
+
+                // Edit the selected question
+                Qnas[choice] = EditQuestion(Qnas[choice]);
+
+                // Save the updated list back to the file
+                QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
+            }
+            else if (string.IsNullOrWhiteSpace(input))
+            {
+                // If the user presses Enter without making a choice, skip editing
+                Console.WriteLine("No changes made. Skipping to quiz playthrough...");
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection. Returning to main menu.");
+                return;
+            }
+
+            // Offer to play the quiz after editing
+            Console.WriteLine("Would you like to play the quiz now? (yes/no)");
+            string playQuizResponse = Console.ReadLine().Trim().ToLower();
+            if (playQuizResponse == "yes" || playQuizResponse == "y")
+            {
+                PlayQuiz(Qnas);
+            }
+
+            // Use if a method to edit a question is implemented in QuestionAndAnswers
             Qnas[choice] = EditQuestion(Qnas[choice]);
-
-            // Save the updated list back to the file
-            QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
         }
        
         private static QuestionAndAnswers EditQuestion(QuestionAndAnswers qna)
         {
-
             Console.WriteLine("Editing Question: ");
             Console.WriteLine("Current Question: " + qna.Question);
             Console.WriteLine("Enter new question (leave blank to keep current): ");
@@ -301,6 +328,27 @@
             if (!string.IsNullOrWhiteSpace(newQuestion))
             {
                 qna.Question = newQuestion; // Ensure Question property has a public setter
+
+                // Edit the correct answer
+                Console.WriteLine("Current Correct Answer: " + qna.CorrectAnswer);
+                Console.WriteLine("Enter new correct answer (leave blank to keep current): ");
+                string newCorrectAnswer = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(newCorrectAnswer))
+                {
+                    qna.CorrectAnswer = newCorrectAnswer;
+                }
+
+                // Edit the incorrect answers
+                for (int i = 0; i < qna.IncorrectAnswers.Count; i++)
+                {
+                    Console.WriteLine($"Current Incorrect Answer {i + 1}: {qna.IncorrectAnswers[i]}");
+                    Console.WriteLine($"Enter new incorrect answer {i + 1} (leave blank to keep current): ");
+                    string newIncorrectAnswer = Console.ReadLine();
+                    if (!string.IsNullOrWhiteSpace(newIncorrectAnswer))
+                    {
+                        qna.IncorrectAnswers[i] = newIncorrectAnswer;
+                    }
+                }
             }
 
             return qna;
