@@ -34,10 +34,8 @@
                         break;
 
                     case 2:
-                        // Mode for playing a quiz from an existing file
-                        var filePath = UserInterface.AskForQuizFilePath();
-                        Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
-                        UserInterface.PlayQuiz(Qnas);
+                        // Mode for playing/editing a quiz from an existing file
+                        UserInterface.EditQuiz(); // Remove the argument
                         break;
 
                     case 3:
