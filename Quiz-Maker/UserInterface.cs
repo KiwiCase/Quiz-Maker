@@ -314,9 +314,6 @@
             {
                 PlayQuiz(Qnas);
             }
-
-            // Use if a method to edit a question is implemented in QuestionAndAnswers
-            Qnas[choice] = EditQuestion(Qnas[choice]);
         }
        
         private static QuestionAndAnswers EditQuestion(QuestionAndAnswers qna)
