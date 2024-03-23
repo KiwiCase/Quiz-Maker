@@ -260,15 +260,19 @@
             foreach (var qna in Qnas)
             {
                 var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
-                Console.WriteLine($"Question: {qna.Question}");
-                for (int i = 0; i < shuffledAnswers.Count; i++)
+                bool isCorrect = false;
+                while (!isCorrect) // Loop until the correct answer is picked
                 {
-                    Console.WriteLine($"{i + 1}. {shuffledAnswers[i]}");
-                }
+                    Console.WriteLine($"Question: {qna.Question}");
+                    for (int i = 0; i < shuffledAnswers.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {shuffledAnswers[i]}");
+                    }
 
-                int userPick = ValidateUserInput(shuffledAnswers);
-                bool isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
-                ProvideFeedback(isCorrect);
+                    int userPick = ValidateUserInput(shuffledAnswers);
+                    isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
+                    ProvideFeedback(isCorrect);
+                }
             }
         }
 
