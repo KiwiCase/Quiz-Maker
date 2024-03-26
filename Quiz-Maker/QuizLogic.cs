@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Quiz_Maker
 {
     public static class QuizLogic
@@ -33,6 +35,18 @@ namespace Quiz_Maker
         {
             int correctIndex = shuffledAnswers.IndexOf(correctAnswer);
             return userPick - 1 == correctIndex;
+        }
+
+        public static void SaveQuestionsToFile(List<QuestionAndAnswers> questions, string filePath)
+        {
+            string jsonString = JsonConvert.SerializeObject(questions, Formatting.Indented);
+            File.WriteAllText(filePath, jsonString);
+        }
+
+        public static List<QuestionAndAnswers> LoadQuestionsFromFile(string filePath)
+        {
+            string jsonString = File.ReadAllText(filePath);
+            return JsonConvert.DeserializeObject<List<QuestionAndAnswers>>(jsonString);
         }
     }
 }
