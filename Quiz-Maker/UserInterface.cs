@@ -38,7 +38,7 @@ namespace Quiz_Maker
         /// Exits the loop once a valid input is received.
         /// </summary>
         /// <returns>The number of questions the user wants in the quiz, not exceeding the maximum limit.</returns>
-        public static int HowManyQuestions()
+        public static int InputNumberOfQuestions()
         {
             const int MaxQuestions = 5; // Constant for maximum allowed questions
             int answer;
