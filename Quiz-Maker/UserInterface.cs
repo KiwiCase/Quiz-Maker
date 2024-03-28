@@ -4,6 +4,8 @@ namespace Quiz_Maker
 {
     public static class UserInterface
     {
+        private const string ResponseYes = "yes";
+        private const string ResponseY = "y";
         /// <summary>
         /// Displays a welcome message to the user.
         /// </summary>
@@ -216,7 +218,7 @@ namespace Quiz_Maker
         {
             Console.WriteLine("Do you want to save this quiz for later? (yes/no)");
             string saveResponse = Console.ReadLine().Trim().ToLower();
-            if (saveResponse == "yes" || saveResponse == "y")
+            if (saveResponse == ResponseYes || saveResponse == ResponseY)
             {
                 Console.WriteLine("Enter a file name to save your quiz: ");
                 string fileName = Console.ReadLine().Trim();
