@@ -231,7 +231,7 @@
                 try
                 {
                     // Directly call the SaveQuestionsToFile method from the QuestionAndAnswers class
-                    QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
+                    QuizLogic.SaveQuestionsToFile(Qnas, filePath);
                     Console.WriteLine($"Quiz saved successfully to {filePath}.");
                 }
                 catch (Exception ex)
@@ -279,7 +279,7 @@
         public static void EditQuiz()
         {
             string filePath = AskForQuizFilePath();
-            var Qnas = QuestionAndAnswers.LoadQuestionsFromFile(filePath);
+            var Qnas = QuizLogic.LoadQuestionsFromFile(filePath);
 
             Console.WriteLine("Select a question to edit (or press Enter to skip):");
             for (int i = 0; i < Qnas.Count; i++)
@@ -298,7 +298,7 @@
                 Qnas[choice] = EditQuestion(Qnas[choice]);
 
                 // Save the updated list back to the file
-                QuestionAndAnswers.SaveQuestionsToFile(Qnas, filePath);
+                QuizLogic.SaveQuestionsToFile(Qnas, filePath);
             }
             else if (string.IsNullOrWhiteSpace(input))
             {
