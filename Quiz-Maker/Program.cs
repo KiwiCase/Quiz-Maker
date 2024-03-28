@@ -2,46 +2,35 @@
 {
     public class Program
     {
+        public enum QuizMode
+        {
+            CreateNewQuiz = 1,
+            LoadExistingQuiz = 2,
+            Quit = 3
+        }
+
         public static void Main()
         {
             UserInterface.WelcomeMessage();
 
-            while (true) // Continuously run until the user decides to exit.
+            while (true)
             {
-                int mode = UserInterface.ChooseMode();
+                QuizMode mode = UserInterface.ChooseMode();
 
                 switch (mode)
                 {
-                    case 1:
-                        // Mode for creating or updating a quiz
-                        var numberOfQuestions = UserInterface.HowManyQuestions();
-                        var Qnas = UserInterface.UserQuestionsAndAnswers(numberOfQuestions);
-                        UserInterface.ReadyToPlayQuiz();
-
-                        foreach (var qna in Qnas)
-                        {
-                            var shuffledAnswers = QuizLogic.ShuffleAnswers(qna);
-                            bool isCorrect = false;
-                            while (!isCorrect)
-                            {
-                                var userPick = UserInterface.AskAndValidateQuestion(qna, shuffledAnswers);
-                                isCorrect = QuizLogic.CheckAnswer(shuffledAnswers, userPick, qna.CorrectAnswer);
-                                UserInterface.ProvideFeedback(isCorrect);
-                            }
-                        }
-
-                        UserInterface.PromptAndSaveQuiz(Qnas);
+                    case QuizMode.CreateNewQuiz:
+                        // Logic for creating a new quiz
                         break;
 
-                    case 2:
-                        // Mode for playing/editing a quiz from an existing file
-                        UserInterface.EditQuiz(); // Remove the argument
+                    case QuizMode.LoadExistingQuiz:
+                        // Logic for loading an existing quiz
+                        UserInterface.EditQuiz();
                         break;
 
-                    case 3:
-                        // Option to exit the application
+                    case QuizMode.Quit:
                         Console.WriteLine("Exiting the application. Thank you for using Quiz Maker.");
-                        return; // Exit the Main method, thus ending the program.
+                        return; // Cleanly exits the program.
                 }
             }
         }

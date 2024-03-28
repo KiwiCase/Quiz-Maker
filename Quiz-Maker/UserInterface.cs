@@ -1,4 +1,6 @@
-﻿namespace Quiz_Maker
+﻿using static Quiz_Maker.Program;
+
+namespace Quiz_Maker
 {
     public static class UserInterface
     {
@@ -15,22 +17,14 @@
         /// Continuously requests input until a valid option is entered. Returns the chosen mode or exits the application.
         /// </summary>
         /// <returns>The user's chosen mode as an integer, where 1 represents creating a new quiz, 2 represents loading an existing quiz, and 3 to quit.</returns>
-        public static int ChooseMode()
+        public static QuizMode ChooseMode()
         {
             Console.WriteLine("Select an option: \n1. Create New Quiz\n2. Load Existing Quiz\n3. Quit");
             while (true)
             {
-                if (int.TryParse(Console.ReadLine(), out int mode))
+                if (int.TryParse(Console.ReadLine(), out int mode) && Enum.IsDefined(typeof(QuizMode), mode))
                 {
-                    if (mode == 1 || mode == 2)
-                    {
-                        return mode;
-                    }
-                    else if (mode == 3)
-                    {
-                        Console.WriteLine("Exiting the application. Goodbye!");
-                        Environment.Exit(0); // Exits the application
-                    }
+                    return (QuizMode)mode;
                 }
                 Console.WriteLine("Invalid selection. Please enter 1 to create a new quiz, 2 to load an existing quiz, or 3 to quit.");
             }
