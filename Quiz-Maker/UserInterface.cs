@@ -51,10 +51,9 @@ namespace Quiz_Maker
                 {
                     break; // Exit loop when input is valid and within the allowed range
                 }
-                else
-                {
-                    Console.WriteLine($"This is not a valid input. \nHow many questions would you like in your Quiz? \n{MaxQuestions} is the maximum questions allowed: ");
-                }
+                // Prompt for input again directly after the if block
+                Console.WriteLine($"This is not a valid input. \nHow many questions would you like in your Quiz? \n{MaxQuestions} is the maximum questions allowed: ");
+                
             }
             return answer;
         }
